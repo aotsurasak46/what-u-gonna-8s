@@ -7,7 +7,7 @@ namespace what_u_gonna_eat.Models;
 public class Account
 {
     [Key]
-    public int UserId { get; set; }
+    public int Id{ get; set; }
     
     [Required(ErrorMessage = "Username is required. ")]
     [UniqueUsername(ErrorMessage = "Username is already taken.")]
