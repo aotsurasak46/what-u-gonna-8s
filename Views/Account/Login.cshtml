@@ -1,0 +1,65 @@
+@model Account;
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = null;
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/LoginStyle.css" asp-append-version="true" />
+    <title>loading</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login_box">
+            <h1>Login</h1>
+            <form method="post" asp-controller="Account" asp-action="Login">
+                <!--Username-->
+                
+                <div id="input_box" class="form-group">
+                    <input asp-for="Username" class="form-control" type="text" required="" />
+                    <label asp-for="Username">Username</label>
+                    <ion-icon class="icon " name="person-circle-outline"></ion-icon>
+                </div>
+
+                <!--Password-->
+                <div id="input_box" class="form-group">
+                    <input asp-for="Password" class="form-control" type="password" required="" />
+                    <label asp-for="Password">Password</label>
+                    <ion-icon class="icon" name="lock-closed-outline"></ion-icon>
+                </div>
+
+                <!--buttun login-->
+                <div class="login">
+                    <button type="submit" asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-primary my-2">Log In</button>
+                </div>
+                <div id="errorbox">     
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <span asp-validation-summary="ModelOnly" class="text-danger"></span>
+                </div>
+            
+                <!--buttun regist-->
+                <div>
+                    <div class="reg">
+                        <p>don't have a account </p>
+                        <a asp-controller="Account" asp-action="Register">registration</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>
