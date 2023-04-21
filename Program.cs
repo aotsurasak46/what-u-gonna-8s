@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using what_u_gonna_eat.Data;
 using Microsoft.AspNetCore.Session;
+using what_u_gonna_eat.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,12 +36,9 @@ else
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
-app.UseSession();
-
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

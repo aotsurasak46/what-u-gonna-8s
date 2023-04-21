@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model Account
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <h1>Ayo!, @ViewData["UserName"]. Have Fun!</h1>
+    <h1>Ayo!, <label asp-for="Username"></label>. Have Fun!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

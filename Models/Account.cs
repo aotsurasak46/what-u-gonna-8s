@@ -10,7 +10,6 @@ public class Account
     public int Id { get; set; }
     
     [Required(ErrorMessage = "Username is required. ")]
-    [UniqueUsername(ErrorMessage = "Username is already taken.")]
     public string Username { get; set; }
 
     [Required(ErrorMessage = "Password is required. ")]

@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 using what_u_gonna_eat.Data;
 using what_u_gonna_eat.Models;
 
@@ -26,11 +26,20 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Register(Account obj) 
     {
+        var user = _db.Account.FirstOrDefault(u => u.Username == obj.Username);
         if (ModelState.IsValid)
         {
-            _db.Account.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Login");
+            if (user == null) 
+            {
+                _db.Account.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ModelState.AddModelError(nameof(Account.Username), "Username is already taken.");
+            }
+            
         }
         return View(obj);
     }
