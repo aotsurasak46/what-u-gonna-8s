@@ -15,9 +15,9 @@ namespace what_u_gonna_eat.Models
 
 		public bool IsClosed { get; set; }
 
-		public int[] DepositorsId { get; set; }
+        public virtual ICollection<Depositor> Depositors { get; set; }
 
-		[Required]
+        [Required]
 		public TimeSpan Duration { get; set; }
 
 		[Required]

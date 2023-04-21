@@ -8,14 +8,16 @@ namespace what_u_gonna_eat.Models
 	{
 		[Key]
 		public int Id { get; set; }
+
 		[ForeignKey("DeliverPost")]
 		public int postId { get; set; }
+
 		[ForeignKey("Account")]
 		public int UserId { get; set; }
 
 		[Required]
 		public string FoodName { get; set; }
 
-
-	}
+        public virtual DeliverPost DeliverPost { get; set; }
+    }
 }

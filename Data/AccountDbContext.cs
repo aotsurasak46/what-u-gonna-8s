@@ -6,9 +6,11 @@ public class AccountDbContext : DbContext
 {
     public AccountDbContext(DbContextOptions<AccountDbContext> options) : base(options) { }
 
-    public DbSet<Account> Account { get; set; }
+    public DbSet<Account> Accounts { get; set; }
 
     public DbSet<EaterPost> EaterPosts { get; set; }
 
-
+    public DbSet<DeliverPost> DeliverPosts { get; set; }
+    
+    public DbSet<Depositor> Depositors { get; set; }
 }

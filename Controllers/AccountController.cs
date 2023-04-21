@@ -26,12 +26,12 @@ public class AccountController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Register(Account obj) 
     {
-        var user = _db.Account.FirstOrDefault(u => u.Username == obj.Username);
+        var user = _db.Accounts.FirstOrDefault(u => u.Username == obj.Username);
         if (ModelState.IsValid)
         {
             if (user == null) 
             {
-                _db.Account.Add(obj);
+                _db.Accounts.Add(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Login");
             }
@@ -47,7 +47,7 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Login(Account obj) {
 
-        var user = _db.Account.FirstOrDefault(u => u.Username == obj.Username);
+        var user = _db.Accounts.FirstOrDefault(u => u.Username == obj.Username);
         if (user != null)
         {
             if (user.Password == obj.Password)

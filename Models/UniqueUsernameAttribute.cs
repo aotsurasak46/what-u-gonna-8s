@@ -11,7 +11,7 @@ namespace what_u_gonna_eat.Models
 
             string username = (string)value;
 
-            if (db.Account.Any(u => u.Username == username))
+            if (db.Accounts.Any(u => u.Username == username))
             {
                 return new ValidationResult("Username is already taken.");
             }
