@@ -20,5 +20,8 @@ namespace what_u_gonna_eat.Models
 		[Required]
 		public TimeSpan Duration { get; set; }
 
+		[Required]
+		public string Description { get; set; }
+
 	}
 }
