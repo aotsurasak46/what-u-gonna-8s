@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 using what_u_gonna_eat.Data;
 using what_u_gonna_eat.Models;
 
@@ -42,7 +43,7 @@ public class AccountController : Controller
         {
             if (user.Password == obj.Password)
             {
-
+                HttpContext.Session.SetInt32("UserId", user.Id);
                 return RedirectToAction("Index", "Home");
             }
             else

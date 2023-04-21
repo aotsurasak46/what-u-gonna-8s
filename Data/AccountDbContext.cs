@@ -8,7 +8,7 @@ public class AccountDbContext : DbContext
 
     public DbSet<Account> Account { get; set; }
 
-
+    public DbSet<EaterPost> EaterPosts { get; set; }
 
 
 }
