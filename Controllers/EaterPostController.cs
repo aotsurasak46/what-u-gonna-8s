@@ -6,7 +6,7 @@ namespace what_u_gonna_eat.Controllers
 {
     public class EaterController : Controller
     {
-        private readonly AccountDbContext _db;
+        private readonly ApplicationDbContext _db;
 
         public IActionResult Index()
         {
