@@ -10,6 +10,6 @@ public class  ApplicationDbContext : DbContext
 
     public DbSet<EaterPost> EaterPosts { get; set; }
 
-    public DbSet<DeliverPost> DeliverPosts { get; set; }
-    
+    public DbSet<DeliverPost> DeliverPost { get; set; }
+
 }

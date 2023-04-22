@@ -4,7 +4,7 @@ using what_u_gonna_eat.Models;
 
 namespace what_u_gonna_eat.Controllers
 {
-    public class EaterController : Controller
+    public class EaterPostController : Controller
     {
         private readonly ApplicationDbContext _db;
 
@@ -17,7 +17,7 @@ namespace what_u_gonna_eat.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(EaterPost obj)
         {
-            
+
             if (ModelState.IsValid)
             {
                 _db.EaterPosts.Add(obj);
