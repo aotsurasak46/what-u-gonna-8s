@@ -26,9 +26,10 @@ public class HomeController : Controller
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
             if (user != null)
             {
-                ViewBag.Id = user.Id;
-                ViewBag.Username = user.Username;
-                ViewBag.Email = user.Email;
+                //ViewBag.Id = user.Id;
+                //ViewBag.Username = user.Username;
+                //ViewBag.Email = user.Email;
+                ViewData["UserName"] = user.Username;
             }
             return View(user);
         }

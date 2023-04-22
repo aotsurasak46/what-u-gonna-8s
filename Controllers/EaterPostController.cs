@@ -6,7 +6,7 @@ namespace what_u_gonna_eat.Controllers
 {
     public class EaterPostController : Controller
     {
-        private readonly AccountDbContext _db;
+        private readonly ApplicationDbContext _db;
 
         public IActionResult Index()
         {
@@ -17,7 +17,7 @@ namespace what_u_gonna_eat.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(EaterPost obj)
         {
-            
+
             if (ModelState.IsValid)
             {
                 _db.EaterPosts.Add(obj);
