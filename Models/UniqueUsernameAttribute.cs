@@ -7,7 +7,7 @@ namespace what_u_gonna_eat.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var db = (AccountDbContext)validationContext.GetService(typeof(AccountDbContext));
+            var db = (ApplicationDbContext)validationContext.GetService(typeof(ApplicationDbContext));
 
             string username = (string)value;
 

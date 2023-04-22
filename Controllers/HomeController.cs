@@ -9,9 +9,9 @@ namespace what_u_gonna_eat.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly AccountDbContext _db;
+    private readonly ApplicationDbContext _db;
 
-    public HomeController(ILogger<HomeController> logger,AccountDbContext db)
+    public HomeController(ILogger<HomeController> logger,ApplicationDbContext db)
     {
         _logger = logger;
         _db = db;

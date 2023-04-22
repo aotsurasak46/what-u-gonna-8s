@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 using what_u_gonna_eat.Data;
 using what_u_gonna_eat.Models;
@@ -11,9 +12,9 @@ namespace what_u_gonna_eat.Controllers;
 
 public class AccountController : Controller
 {
-    private readonly AccountDbContext _db;
+    private readonly ApplicationDbContext _db;
 
-    public AccountController(AccountDbContext db)
+    public AccountController(ApplicationDbContext db)
     {
         _db = db;
     }
@@ -67,6 +68,12 @@ public class AccountController : Controller
         
         return View(obj);
 
+    }
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        HttpContext.Session.Remove("UserId");
+        return RedirectToAction("Login","Account");
     }
 
 

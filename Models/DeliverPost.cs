@@ -10,18 +10,20 @@ namespace what_u_gonna_eat.Models
 
 		[ForeignKey("Account")]
 		public int UserId { get; set; }
-
 		public string Restaurant { get; set; }
-
-		public bool IsClosed { get; set; }
-
-        public virtual ICollection<Depositor> Depositors { get; set; }
-
         [Required]
-		public TimeSpan Duration { get; set; }
-
+		public int? DurationInMinutes { get; set; }
 		[Required]
 		public string Description { get; set; }
+        public List<Account> Participants { get; set; }
+        public DateTime DateCreated { get; set; }
+        public bool IsActive
+        {
+            get
+            {
+                return Participants.Count < 5 && DateCreated.AddMinutes(DurationInMinutes ?? 0) > DateTime.Now;
+            }
+        }
 
-	}
+    }
 }

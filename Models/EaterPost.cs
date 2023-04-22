@@ -10,7 +10,7 @@ namespace what_u_gonna_eat.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("Acoount")]
+        [ForeignKey("Account")]
         public int UserId { get; set; }
 
         [Required] public string Restaurant { get; set; } = "Prathep Restaurant";

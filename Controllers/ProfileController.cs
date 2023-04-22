@@ -10,9 +10,9 @@ namespace what_u_gonna_eat.Controllers
 	public class ProfileController : Controller
 	{
 
-        private readonly AccountDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public ProfileController(AccountDbContext db)
+        public ProfileController(ApplicationDbContext db)
         {
             _db = db;
         }

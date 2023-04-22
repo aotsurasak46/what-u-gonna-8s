@@ -2,9 +2,9 @@
 using what_u_gonna_eat.Models;
 
 namespace what_u_gonna_eat.Data;
-public class AccountDbContext : DbContext
+public class  ApplicationDbContext : DbContext
 {
-    public AccountDbContext(DbContextOptions<AccountDbContext> options) : base(options) { }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<Account> Accounts { get; set; }
 
@@ -12,5 +12,4 @@ public class AccountDbContext : DbContext
 
     public DbSet<DeliverPost> DeliverPosts { get; set; }
     
-    public DbSet<Depositor> Depositors { get; set; }
 }

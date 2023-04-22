@@ -11,8 +11,8 @@ using what_u_gonna_eat.Data;
 
 namespace what_u_gonna_eat.Migrations
 {
-    [DbContext(typeof(AccountDbContext))]
-    [Migration("20230421232928_what28")]
+    [DbContext(typeof(ApplicationDbContext))]
+    [Migration("20230421000653_what28")]
     partial class what28
     {
         /// <inheritdoc />
