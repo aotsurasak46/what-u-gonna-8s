@@ -54,7 +54,7 @@ public class AccountController : Controller
             if (user.Password == obj.Password)
             {
                 HttpContext.Session.SetInt32("UserId", user.Id);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "DeliverPost");
             }
             else
             {

@@ -2,7 +2,7 @@
 
 namespace what_u_gonna_eat.Controllers
 {
-    public class EaterController : Controller
+    public class EaterPostController : Controller
     {
         public IActionResult Index()
         {

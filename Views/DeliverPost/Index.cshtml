@@ -1,9 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model Account
+@model IEnumerable<what_u_gonna_eat.Models.Account>;
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <h1>Ayo!, @ViewBag.Username Have Fun!</h1>
+    <h1>Ayo! Have Fun!</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach(var account in Model)
+    {
+        <p>Username : @account.Username</p>
+        <p>Email : @account.Email</p>
+    }
 </div>
