@@ -10,9 +10,9 @@ namespace what_u_gonna_eat.Controllers
 	public class ProfileController : Controller
 	{
 
-        private readonly AccountDbContext _db;
+        private readonly ApplicationDbContext _db;
 
-        public ProfileController(AccountDbContext db)
+        public ProfileController(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -23,7 +23,7 @@ namespace what_u_gonna_eat.Controllers
             if (userId != null)
             {
                 // use the user ID to retrieve user information
-                var user = _db.Account.FirstOrDefault(u => u.Id == userId);
+                var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
                 if (user != null)
                 {
                     ViewBag.Id = user.Id;

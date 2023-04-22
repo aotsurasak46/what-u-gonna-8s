@@ -51,7 +51,62 @@ namespace what_u_gonna_eat.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Account");
+                    b.ToTable("Accounts");
+                });
+
+            modelBuilder.Entity("what_u_gonna_eat.Models.DeliverPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsClosed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Restaurant")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliverPosts");
+                });
+
+            modelBuilder.Entity("what_u_gonna_eat.Models.Depositor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("FoodName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("postId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("postId");
+
+                    b.ToTable("Depositors");
                 });
 
             modelBuilder.Entity("what_u_gonna_eat.Models.EaterPost", b =>
@@ -96,6 +151,17 @@ namespace what_u_gonna_eat.Migrations
                     b.ToTable("EaterPosts");
                 });
 
+            modelBuilder.Entity("what_u_gonna_eat.Models.Depositor", b =>
+                {
+                    b.HasOne("what_u_gonna_eat.Models.DeliverPost", "DeliverPost")
+                        .WithMany("Depositors")
+                        .HasForeignKey("postId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeliverPost");
+                });
+
             modelBuilder.Entity("what_u_gonna_eat.Models.EaterPost", b =>
                 {
                     b.HasOne("what_u_gonna_eat.Models.Account", "account")
@@ -105,6 +171,11 @@ namespace what_u_gonna_eat.Migrations
                         .IsRequired();
 
                     b.Navigation("account");
+                });
+
+            modelBuilder.Entity("what_u_gonna_eat.Models.DeliverPost", b =>
+                {
+                    b.Navigation("Depositors");
                 });
 #pragma warning restore 612, 618
         }
