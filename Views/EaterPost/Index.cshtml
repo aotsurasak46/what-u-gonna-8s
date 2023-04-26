@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@using what_u_gonna_eat.ViewModels;
+@model EaterPostView
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h1>Ayo! Have Fun!</h1>
+    <h1 class="text-center">Login</h1>
+    <form method="POST" asp-controller="DeliverPost" asp-action="Create">
+        <div class="form-group">
+            <label>Food : </label>
+            <input asp-for="eaterPost.Menu" class="form-control" required=""/>
+        </div>
+
+        <div class="form-group">
+            <label>Description : </label>
+            <input placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" />
+        </div>
+
+        <button type="submit" asp-area="" asp-controller="EaterPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
+    </form>
+    <p>Learn bout <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @foreach (var post in Model.eaterPosts)
+    {
+        <div>
+            <p>@post.CreatedDate</p>
+            <p>@post.Poster.Username</p>
+            <p>@post.Description</p>
+            <p>@post.Menu</p>
+        </div>
+
+    }
+
+
+
+</div>

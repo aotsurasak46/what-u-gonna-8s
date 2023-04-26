@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using what_u_gonna_eat.Data;
 using Azure.Identity;
+using what_u_gonna_eat.ViewModels;
 
 namespace what_u_gonna_eat.Controllers
 {
@@ -19,6 +20,7 @@ namespace what_u_gonna_eat.Controllers
 
         public ActionResult Index()
         {
+            //Check User
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId != null)
             {
@@ -29,8 +31,14 @@ namespace what_u_gonna_eat.Controllers
                     ViewBag.Id = user.Id;
                     ViewBag.Username = user.Username;
                     ViewBag.Email = user.Email;
+                    ProfileViewModel vm = new ProfileViewModel();
+                    vm.account = user;
+                    vm.deliverposts = _db.DeliverPosts.ToList();
+                    vm.eaterposts = _db.EaterPost.ToList();
+                    return View(vm);
                 }
-                return View(user);
+                return RedirectToAction(nameof(AccountController.Login), "Account");
+
             }
             else
             {

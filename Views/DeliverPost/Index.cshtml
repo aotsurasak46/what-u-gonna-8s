@@ -1,15 +1,42 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IEnumerable<what_u_gonna_eat.Models.Account>;
-
+@using what_u_gonna_eat.ViewModels;
+@model DeliverPostView
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <h1>Ayo! Have Fun!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @foreach(var account in Model)
+    <h1 class="text-center">Login</h1>
+    <form method="POST" asp-controller="DeliverPost" asp-action="Create">
+        <select asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Select Restaurant</option>
+            <option value="Pratep">Pratep</option>
+            <option value="Sia O">Sia O</option>
+            <option value="T PangGon">T PangGon</option>
+        </select>
+        
+        <div class="form-group">
+            <label>Description : </label>
+            <input placeholder="กรอกรายละเอียดการรับอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" />
+        </div>
+
+        <button type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
+    </form>
+    <p>Learn bout <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @if(Model.deliverPosts != null)
     {
-        <p>Username : @account.Username</p>
-        <p>Email : @account.Email</p>
+        @foreach(var post in Model.deliverPosts)
+        {
+            <div>
+                <p>@post.CreatedDate</p>
+                <p>@post.Poster.Username</p>
+                <p>@post.Description</p>
+                <p>@post.Restaurant</p>
+            </div>
+
+        }
     }
+
+
+
 </div>

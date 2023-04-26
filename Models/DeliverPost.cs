@@ -6,24 +6,47 @@ namespace what_u_gonna_eat.Models
 {
 	public class DeliverPost
 	{
-		[Key] public int Id { get; set; }
+        [Key]
+        public int? Id { get; set; }
 
-		[ForeignKey("Account")]
-		public int UserId { get; set; }
-		public string Restaurant { get; set; }
-        [Required]
-		public int? DurationInMinutes { get; set; }
-		[Required]
-		public string Description { get; set; }
-        public List<Account> Participants { get; set; }
-        public DateTime DateCreated { get; set; }
-        public bool IsActive
+        [Required(ErrorMessage = "Restaurant is required.")]
+        public string? Restaurant { get; set; }
+
+        [Required(ErrorMessage = "Description is required.")]
+        public string? Description { get; set; }
+
+        public int? OpenAmount { get; set; } = 5;
+
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+
+        private bool _status;
+
+        public bool Status
         {
             get
             {
-                return Participants.Count < 5 && DateCreated.AddMinutes(DurationInMinutes ?? 0) > DateTime.Now;
+                return _status;
+            }
+            set
+            {
+                if (OpenAmount == 0)
+                {
+                    _status = false;
+                }
+                else
+                {
+                    _status = true;
+                }
             }
         }
+
+        // model relationship properties
+        [ForeignKey("Account")]
+        public int? PosterId { get; set; }
+        public virtual Account? Poster { get; set; }
+
+        public virtual ICollection<Order> Orderers { get; set; }
+
 
     }
 }

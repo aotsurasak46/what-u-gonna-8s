@@ -28,20 +28,19 @@ public class AccountController : Controller
     public IActionResult Register(Account obj) 
     {
         var user = _db.Accounts.FirstOrDefault(u => u.Username == obj.Username);
-        if (ModelState.IsValid)
+        
+        if (user == null) 
         {
-            if (user == null) 
-            {
-                _db.Accounts.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                ModelState.AddModelError(nameof(Account.Username), "Username is already taken.");
-            }
-            
+            _db.Accounts.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Login");
         }
+        else
+        {
+            ModelState.AddModelError(nameof(Account.Username), "Username is already taken.");
+        }
+            
+        
         return View(obj);
     }
 
