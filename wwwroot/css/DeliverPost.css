@@ -1,0 +1,71 @@
+  p.yellow{
+    color: #FC7E01;
+  }
+  
+  p.dark-blue{
+    color: #002D44;
+  }
+
+  .yellow-div{
+    background-color: #FDBF46;
+  }
+
+  .vertical {
+    height: 100px; /* set the height of the vertical line */
+    border: none; /* remove the default horizontal line */
+    border-left: 2px solid black; /* add a solid black border on the left side */
+    transform: rotate(90deg); /* rotate the element by 90 degrees to make it vertical */
+  }
+
+  .medium-font{
+    font-size: 20px;
+  }
+
+  .header {
+    padding: 10px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+  }
+
+  .card-p {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    width: 100%;
+  }
+  
+  .scrollbar
+  {
+    height: 300px;
+    width: 30px;
+    background: #F5F5F5;
+    overflow-y: scroll;
+    margin: 25px;
+  }
+
+.disable-scroll::-webkit-scrollbar
+{
+	width: 0px;
+}
+
+
+
+  .button {
+    border: none;
+    display: inline-block;
+    padding: 10px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
+ 
+
+  
+  
