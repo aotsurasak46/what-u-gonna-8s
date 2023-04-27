@@ -24,7 +24,7 @@ namespace what_u_gonna_eat.Models
 
         public int? PosterId { get; set; }
 
-        public Account Poster { get; set; }
+        public virtual Account Poster { get; set; }
 
         public virtual ICollection<EaterPostAccount> EaterPostAccounts { get; set; }
 
