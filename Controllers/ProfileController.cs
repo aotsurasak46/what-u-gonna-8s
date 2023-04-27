@@ -21,17 +21,14 @@ namespace what_u_gonna_eat.Controllers
         public ActionResult Index()
         {
             //Check User
-            var userId = HttpContext.Session.GetInt32("UserId");
+            var userId =  HttpContext.Session.GetInt32("UserId");
             if (userId != null)
             {
                 // use the user ID to retrieve user information
                 var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
                 if (user != null)
                 {
-                    ViewBag.Id = user.Id;
-                    ViewBag.Username = user.Username;
-                    ViewBag.Email = user.Email;
-                    ProfileViewModel vm = new ProfileViewModel();
+                    var vm = new ProfileViewModel();
                     vm.account = user;
                     vm.deliverposts = _db.DeliverPosts.ToList();
                     vm.eaterposts = _db.EaterPost.ToList();
@@ -44,6 +41,22 @@ namespace what_u_gonna_eat.Controllers
             {
                 return RedirectToAction(nameof(AccountController.Login), "Account");
             }
+
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Accounts.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
         }
     }
 }

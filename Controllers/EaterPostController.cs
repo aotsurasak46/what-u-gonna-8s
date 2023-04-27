@@ -15,7 +15,6 @@ namespace what_u_gonna_eat.Controllers
 
         public IActionResult Index()
         {
-
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId != null)
             {
@@ -34,7 +33,6 @@ namespace what_u_gonna_eat.Controllers
                     {
                         return View(null);
                     }
-
                 }
                 else
                 {
@@ -94,8 +92,18 @@ namespace what_u_gonna_eat.Controllers
             eaterpost.Status = false;
 
             return RedirectToAction("Index");
-            
+        }
 
+        public IActionResult Delete(int postId)
+        {
+            var post = _db.EaterPost.FirstOrDefault(p => p.Id == postId);
+            if (post != null)
+            {
+                _db.EaterPost.Remove(post);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Profile");
+            }
+            return RedirectToAction("Index", "Profile");
         }
     }
 }
