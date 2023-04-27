@@ -23,48 +23,65 @@
 
   .header {
     padding: 10px;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
   }
 
   .card-p {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
+    border-radius: 50px;
     width: 100%;
   }
   
-  .scrollbar
-  {
-    height: 300px;
-    width: 30px;
-    background: #F5F5F5;
-    overflow-y: scroll;
-    margin: 25px;
+  /* #style-2::-webkit-scrollbar-track-piece:end{
+    margin-bottom: 6px;
   }
 
-.disable-scroll::-webkit-scrollbar
-{
-	width: 0px;
+  #style-2::-webkit-scrollbar-track-piece:start{
+    margin-top: 6px;
+  } */
+  
+
+  #style-2::-webkit-scrollbar-button{
+   height: 4px;
+  }
+
+  #style-2::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    background-color: #f5f5f5;
+  }
+  
+  #style-2::-webkit-scrollbar
+  {
+    width: 4px;
+    background-color: #F5F5F5;
+  }
+  
+  #style-2::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #FDBF46;
+  }
+  
+.button {
+  border: none;
+  display: inline-block;
+  padding: 10px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
 }
 
-
-
-  .button {
-    border: none;
-    display: inline-block;
-    padding: 10px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-  }
-  
-  button:hover, a:hover {
-    opacity: 0.7;
-  }
+button:hover, a:hover {
+  opacity: 0.7;
+}
  
 
   
