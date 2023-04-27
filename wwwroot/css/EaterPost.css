@@ -75,6 +75,10 @@ p.dark-blue {
     font-size: 18px;
 }
 
-button:hover, a:hover {
+#buttonwhenenable:hover, a:hover {
     opacity: 0.7;
+}
+
+#buttonwhendisable:hover, a:hover {
+    opacity: 1;
 }

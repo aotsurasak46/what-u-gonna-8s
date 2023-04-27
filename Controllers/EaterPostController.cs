@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Metrics;
 using what_u_gonna_eat.Data;
 using what_u_gonna_eat.Models;
 using what_u_gonna_eat.ViewModels;
@@ -27,6 +28,13 @@ namespace what_u_gonna_eat.Controllers
                         var post = _db.EaterPost.ToList();
                         EaterPostView vm = new EaterPostView();
                         vm.eaterPosts = post;
+                        foreach(var obj in post)
+                        {
+                            int? eachid = obj.PosterId;
+                            var eachUser = _db.Accounts.FirstOrDefault(user => user.Id == eachid);
+                            obj.Poster = eachUser;
+                        }
+                        vm.account = user;
                         return View(vm);
                     }
                     else
@@ -58,7 +66,6 @@ namespace what_u_gonna_eat.Controllers
             {
                 eaterpost.Status = true;
                 eaterpost.PosterId = user.Id;
-                eaterpost.Poster = user;
                 if(eaterpost.Description == null)
                 {
                     eaterpost.Description = "";
@@ -74,36 +81,35 @@ namespace what_u_gonna_eat.Controllers
         }
 
         [HttpPost]
-        public IActionResult OrderSubmit(EaterPost eaterpost)
+        public IActionResult OrderSubmit(int postId)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
             EaterPostAccount epa = new EaterPostAccount();
             //Post Id ของ EaterPost
-            epa.EaterPostId = eaterpost.Id;
-            epa.EaterPost = eaterpost;
-            //Id ของคนกด order
-            epa.BuyerId = user.Id;
-            epa.Buyer = user;
-
-            _db.EaterPostAccounts.Add(epa);
-            _db.SaveChanges();
-
-            eaterpost.Status = false;
-
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult Delete(int postId)
-        {
-            var post = _db.EaterPost.FirstOrDefault(p => p.Id == postId);
+            var post = _db.EaterPost.FirstOrDefault(u => u.Id == postId);
             if (post != null)
             {
-                _db.EaterPost.Remove(post);
+                epa.EaterPostId = post.Id;
+                epa.EaterPost = post;
+                if (post.Description == null)
+                {
+                    post.Description = " ";
+                }
+                //Id ของคนกด order
+                epa.BuyerId = user.Id;
+                epa.Buyer = user;
+
+                _db.EaterPostAccounts.Add(epa);
                 _db.SaveChanges();
-                return RedirectToAction("Index", "Profile");
+
+                post.Status = false;
+
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index", "Profile");
+
+            return RedirectToAction("Index");
+
         }
     }
 }
