@@ -32,9 +32,15 @@ public class Account
     [EmailAddress(ErrorMessage = "Invalid Email Address")]
     public string Email { get; set; }
 
+    [Required]
+    [DataType(DataType.PhoneNumber)]
+    public string? PhoneNumber { get; set; }
+
+
     // model relationship properties
     public virtual ICollection<DeliverPost> DeliverPosts { get; set; }
     public virtual ICollection<Order> Orders { get; set; }
     public virtual ICollection<EaterPostAccount> EaterPostAccounts { get; set; }
+
 
 }

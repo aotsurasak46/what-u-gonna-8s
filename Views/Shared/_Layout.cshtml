@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/what_u_gonna_eat.styles.css" asp-append-version="true" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
-<body>
+<body >
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -20,7 +24,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Profile" asp-action="Index">Profile</a>
+                            <a class="nav-link" style="background-color:aqua;" asp-area="" asp-controller="Profile" asp-action="Index">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="DeliverPost" asp-action="Index">Deliver</a>
@@ -37,7 +41,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="mx-3">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

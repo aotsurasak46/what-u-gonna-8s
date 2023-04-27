@@ -20,3 +20,11 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+p {
+    font-family: "Paytone One";
+}
+
+.thai {
+    font-family: "Prompt";
+}

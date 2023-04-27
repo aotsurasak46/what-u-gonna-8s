@@ -7,6 +7,8 @@ namespace what_u_gonna_eat.ViewModels
         public Account account {  get; set; }
         public List<DeliverPost> deliverposts { get; set; }
         public List<EaterPost> eaterposts { get; set; }
+
+        public EaterPostAccount eaterpostaccount { get; set; }
         
     }
 }
