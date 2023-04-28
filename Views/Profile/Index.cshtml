@@ -24,7 +24,9 @@
     <button asp-controller="Profile" asp-action="Edit">Edit</button>
 </div>
 
+<h1>History</h1>
 <div>
+    <h1>Your Deliver Post</h1>
     @foreach(var post in Model.deliverposts)
     {
         @if(post.PosterId == Model.account.Id)
@@ -55,6 +57,7 @@
             </div>
         }
     }
+    <h1>Your Eater Post</h1>
     @foreach (var post in Model.eaterposts)
     {
         @if (post.PosterId == Model.account.Id)
