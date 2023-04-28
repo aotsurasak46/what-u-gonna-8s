@@ -9,5 +9,7 @@ namespace what_u_gonna_eat.ViewModels
         public IEnumerable<DeliverPost> deliverPosts { get; set; }
         public Order Order { get; set; }
 
+        public List<Order> Orders { get; set; }
+
     }
 }
