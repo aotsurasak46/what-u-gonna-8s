@@ -105,7 +105,11 @@ namespace what_u_gonna_eat.Controllers
                 epa.Buyer = user;
                 epa.BuyerId = user.Id;
 
-                user.EaterPostAccounts.Add(epa);
+                if (user.EaterPostAccounts != null)
+                {
+                    user.EaterPostAccounts.Add(epa);
+
+                }
 
                 post.Status = false;
 
