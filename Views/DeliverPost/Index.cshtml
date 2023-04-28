@@ -4,9 +4,7 @@
 @using what_u_gonna_eat.ViewModels;
 @model DeliverPostView
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h1>Ayo! Have Fun!</h1>
-    <h1 class="text-center">Login</h1>
+    
     <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
         <select asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option selected>Select Restaurant</option>
@@ -22,6 +20,8 @@
 
         <button id="createbtn" type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
     </form>
+
+
     <p>Learn bout <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     
     @if(Model.deliverPosts != null)
