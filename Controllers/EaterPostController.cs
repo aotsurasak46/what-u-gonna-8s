@@ -101,11 +101,11 @@ namespace what_u_gonna_eat.Controllers
                 //Id ของคนกด order
                 epa.BuyerId = user.Id;
                 epa.Buyer = user;
-
+                post.Status = false;
                 _db.EaterPostAccounts.Add(epa);
                 _db.SaveChanges();
 
-                post.Status = false;
+                
 
                 return RedirectToAction("Index");
             }

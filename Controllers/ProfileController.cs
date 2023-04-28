@@ -35,6 +35,7 @@ namespace what_u_gonna_eat.Controllers
                     vm.account = user;
                     vm.deliverposts = _db.DeliverPosts.ToList();
                     vm.eaterposts = _db.EaterPost.ToList();
+                    vm.eaterpostaccounts = _db.EaterPostAccounts.ToList();
                     return View(vm);
                 }
                 return RedirectToAction(nameof(AccountController.Login), "Account");
