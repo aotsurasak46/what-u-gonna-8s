@@ -9,7 +9,7 @@
 }
 
 <h1>Profile</h1>
-<div>
+<div class="pb-3">
     <p>Name : @Model.account.Username</p></p>
     <p>Email : @Model.account.Email</p>
     @if(Model.account.PhoneNumber != null)
@@ -21,17 +21,22 @@
         <p>Phone number: - </p>
     }
 
-    <button asp-controller="Profile" asp-action="Edit">Edit</button>
+    <a class="btn btn-warning"
+       asp-controller="Profile"
+       asp-action="Edit">Edit Profile</a>
+
 </div>
 
-<h1>History</h1>
+<hr/>
+<h1 class="pt-3">History</h1>
+<h1>Your Posts</h1>
 <div>
     <h1>Your Deliver Post</h1>
     @foreach(var post in Model.deliverposts)
     {
         @if(post.PosterId == Model.account.Id)
         {
-            <div style="border: 1px solid black">
+            <div class="p-3" style="border: 1px solid black">
                 <p>Type : Deliver Post</p>
                 <p>Restaurant : @post.Restaurant</p>
                 <P>Description : @post.Description</P>
@@ -62,7 +67,7 @@
     {
         @if (post.PosterId == Model.account.Id)
         {
-            <div style="border: 1px solid black">
+            <div class="p-3" style="border: 1px solid black">
                 <p>Type : Eater Post</p>
                 <p>Menu : @post.Menu</p>
                 <P>Description : @post.Description</P>
