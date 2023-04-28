@@ -35,9 +35,9 @@
                 <p>@post.Restaurant</p>
                 @if (post.Status == true && post.PosterId != Model.account.Id)
                 {
-                    <form method="post" asp-action="AddOrder" asp-asp-controller="DeliverPost" asp-route-postId="@post.Id">
-                        <input placeholder="menu" asp-for="Order.Menu" class="form-control">
-                        <input placeholder="Description" asp-for="Order.Description" class="form-control"> 
+                    <form method="post" asp-action="AddOrder" asp-controller="DeliverPost" asp-route-postId="@post.Id">
+                        <input placeholder="menu" name="foodName" class="form-control" required="">
+                        <input placeholder="description" name="description" class="form-control" required="">
                         <button type="submit">Order</button>
                     </form>
                 }
