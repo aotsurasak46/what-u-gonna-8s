@@ -4,6 +4,8 @@ using what_u_gonna_eat.Data;
 using System.Diagnostics;
 using Microsoft.Extensions.Hosting;
 using what_u_gonna_eat.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace what_u_gonna_eat.Controllers
 {
@@ -30,6 +32,7 @@ namespace what_u_gonna_eat.Controllers
                         var post = _db.DeliverPosts.ToList();
                         DeliverPostView vm = new DeliverPostView();
                         vm.deliverPosts = post;
+                        vm.account = user;
                         return View(vm);
                     }
                     else
@@ -77,22 +80,32 @@ namespace what_u_gonna_eat.Controllers
             }
             
         }
-        
-        public IActionResult AddOrder(DeliverPostView deliverPostView, string foodName,string description) 
+
+
+        public IActionResult AddOrder(DeliverPostView deliverPostView, string foodName,string description, int? postId) 
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
+            deliverPostView = new DeliverPostView();
+            var post = _db.DeliverPosts
+                .Include(p => p.Orderers)
+                    .ThenInclude(deliverPostView => deliverPostView)
+                .FirstOrDefault(p => p.Id == postId);
             if (deliverPostView.deliverPost.Status)
             {
                 Order order = new Order();
                 order.Menu = foodName;
                 order.Description = description;
-                order.DeliverPostId = deliverPostView.deliverPost.Id;
+
                 order.DeliverPost = deliverPostView.deliverPost;
-                order.OrdererId = user.Id;
+                order.DeliverPostId = deliverPostView.deliverPost.Id;
+
                 order.Orderer = user;
+                order.OrdererId = user.Id;
+
                 deliverPostView.deliverPost.OpenAmount -= 1;
                 deliverPostView.deliverPost.Orderers.Add(order);
+
                 _db.Orders.Add(order);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,6 +114,7 @@ namespace what_u_gonna_eat.Controllers
             return RedirectToAction("Index");
 
         }
+
 
         public IActionResult Delete(int postId) 
         {

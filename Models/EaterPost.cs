@@ -7,7 +7,6 @@ namespace what_u_gonna_eat.Models
 {
     public class EaterPost
     {
-        
 
         //self properties
         [Key]
