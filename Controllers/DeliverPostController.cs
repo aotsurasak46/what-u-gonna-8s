@@ -56,6 +56,7 @@ namespace what_u_gonna_eat.Controllers
 
             
         }
+
         public IActionResult Create()
         {
             return View();
