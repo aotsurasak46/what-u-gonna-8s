@@ -16,7 +16,6 @@ namespace what_u_gonna_eat.Models
         public string? Description { get; set; }
 
 
-
         // model relationship properties
         [ForeignKey("DeliverPost")]
         public int? DeliverPostId { get; set; }

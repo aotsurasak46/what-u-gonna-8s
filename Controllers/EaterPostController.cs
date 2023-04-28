@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics.Metrics;
 using what_u_gonna_eat.Data;
 using what_u_gonna_eat.Models;
@@ -87,29 +88,46 @@ namespace what_u_gonna_eat.Controllers
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
             EaterPostAccount epa = new EaterPostAccount();
             //Post Id ของ EaterPost
-            var post = _db.EaterPost.FirstOrDefault(u => u.Id == postId);
+            var post = _db.EaterPost
+                .Include(p => p.EaterPostAccounts)
+                    .ThenInclude(epa => epa.Buyer)
+                .FirstOrDefault(p => p.Id == postId);
             if (post != null)
             {
-                epa.EaterPostId = post.Id;
                 epa.EaterPost = post;
+                epa.EaterPostId = post.Id;
+
                 if (post.Description == null)
                 {
                     post.Description = " ";
                 }
                 //Id ของคนกด order
-                epa.BuyerId = user.Id;
                 epa.Buyer = user;
+                epa.BuyerId = user.Id;
+
+                user.EaterPostAccounts.Add(epa);
+
+                post.Status = false;
 
                 _db.EaterPostAccounts.Add(epa);
                 _db.SaveChanges();
-
-                post.Status = false;
 
                 return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");
+        }
 
+        public IActionResult Delete(int postId) 
+        {
+            var post = _db.EaterPost.FirstOrDefault(p => p.Id == postId);
+            if (post != null)
+            {
+                _db.EaterPost.Remove(post);
+                _db.SaveChanges();
+                return RedirectToAction("Index", "Profile");
+            }
+            return RedirectToAction("Index", "Profile");
         }
     }
 }
