@@ -8,7 +8,7 @@
     ViewData["Title"] = "Profile";
 }
 
-<h1>Profile</h1>
+<h1 style="color: green">Profile</h1>
 <div class="pb-3">
     <p>Name : @Model.account.Username</p></p>
     <p>Email : @Model.account.Email</p>
@@ -28,26 +28,27 @@
 </div>
 
 <hr/>
-<h1 class="pt-3">History</h1>
-<h1>Your Posts</h1>
+<h1 class="pt-3" style="font-size:20px">History</h1>
+<h1 style="color: green">Your Posts</h1>
 <div>
     <h1>Your Deliver Post</h1>
     @foreach(var post in Model.deliverposts)
     {
         @if(post.PosterId == Model.account.Id)
         {
-            <div style="border: 1px solid black">
+            <div style="border: 1px solid black" class="p-3">
                 @if (post.Status)
                 {
-                    <div id="statusbox" style="height:30px;width:100px;right:10px;top:10px;border:1px solid black;background;background-color:#164400;position:center" >เปิด</div>
+                    <div id="statusbox" style="height:30px;width:35px;right:10px;top:10px;border:1px solid black;background;background-color:#164400;position:center; color: white" >เปิด</div>
                 }
                 else
                 {
-                    <div id="statusbox" style="right:10px;top:10px;border:1px solid black;background;background-color:#DA1820"><p>ปิด</p></div>
+                    <div id="statusbox" style="right:10px;top:10px;border:1px solid black;background;background-color:#DA1820;color: white"><p>ปิด</p></div>
                 }
                 <p>Type : Deliver Post</p>
                 <p>Restaurant : @post.Restaurant</p>
                 <P>Description : @post.Description</P>
+
                 @if (post.Orderers != null && post.Orderers.Any())
                 {
                     <p>Orderers:</p>
@@ -77,6 +78,7 @@
     {
         @if (post.PosterId == Model.account.Id)
         {
+            
             <div class="p-3" style="border: 1px solid black">
                 <p>Type : Eater Post</p>
                 <p>Menu : @post.Menu</p>
@@ -91,6 +93,61 @@
         }
     }
 </div>
+
+<h1 style="color: green">Your Orders</h1>
+<div>
+    <h2>Orderers</h2>
+    <div>
+        @if(Model.orders.Any(o => o.OrdererId == Model.account.Id))
+        {
+            @foreach (var post in Model.orders)
+            {
+                @if (post.OrdererId == Model.account.Id)
+                {
+                    <div class="p-3" style="border: 1px solid black">
+                        <p>Your Buyer : @post.DeliverPost.Poster.Username</p>
+                        <p>Menu : @post.Menu</p>
+                        <P>Description : @post.Description</P>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="p-3" style="border: 1px solid black">
+               You don't have any Orders yet.
+            </div>
+        }
+    </div>
+
+    <h2>Buyer</h2>
+    <div>
+        @if(Model.eaterpostaccounts.Any(b=>b.BuyerId == Model.account.Id))
+        {
+
+            @foreach (var post in Model.eaterpostaccounts)
+            {
+                @if (post.BuyerId == Model.account.Id)
+                {
+                    <div class="p-3" style="border: 1px solid black">
+                        <p>Buy for : @post.EaterPost.Poster.Username</p>
+                        <p>Menu : @post.EaterPost.Menu</p>
+                        <P>Description : @post.EaterPost.Description</P>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="p-3" style="border: 1px solid black">
+                You are not Buyer for anyone yet.
+            </div>
+
+        }
+    </div>
+</div>
+
+
 <script>
     var deleteButton = document.getElementById("deleteButton");
 
