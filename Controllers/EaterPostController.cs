@@ -116,8 +116,6 @@ namespace what_u_gonna_eat.Controllers
                 _db.EaterPostAccounts.Add(epa);
                 _db.SaveChanges();
 
-                post.Status = false;
-
                 return RedirectToAction("Index");
             }
 
