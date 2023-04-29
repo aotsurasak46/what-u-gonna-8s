@@ -1,11 +1,12 @@
 function myFunction() {
     var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+
+    if (x.className.indexOf("responsive") != -1) {
+        x.className = x.className.replace("responsive", "");
     } else {
-      x.className = "topnav";
+        x.className += " responsive";
     }
-  }
+}
 
   document.addEventListener('DOMContentLoaded', function() {
     //change user icon

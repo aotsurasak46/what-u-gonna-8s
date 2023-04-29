@@ -5,10 +5,7 @@
 @model EaterPostView
 <link rel="stylesheet" href="~/css/EaterPost.css" />
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h1>Ayo! Have Fun!</h1>
-    <h1 class="text-center">Login</h1>
-    <form method="POST" asp-controller="DeliverPost" asp-action="Create">
+    <form method="POST" asp-controller="EaterPost" asp-action="Create" id="create-form">
         <div class="form-group">
             <label>Food : </label>
             <input asp-for="eaterPost.Menu" class="form-control" required=""/>
@@ -23,6 +20,7 @@
 </div>
 
 <div class="grid grid-cols-1 gap-16 m-3 pt-6 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
+    
     @foreach (var post in @Model.eaterPosts)
     {
         <div class="flex flex-col card-p">
@@ -73,4 +71,22 @@
     }
 
 </div>
+<script>
+    var createForm = document.getElementById("create-form");
+
+    // Add an onsubmit event listener to the form
+    createForm.addEventListener("submit", function (event) {
+        // Get the values of the form inputs
+        var menu = document.getElementById("eaterPost_Menu").value;
+        var description = document.getElementById("eaterPost_Description").value;
+
+        // Display the confirmation dialog with the form values
+        var confirmCreate = confirm("Are you sure you want to create this post?\nDetail:\n\tMenu: " + menu + "\n\tDescription: " + description);
+
+        // If the user clicked "Cancel", prevent the form submission
+        if (!confirmCreate) {
+            event.preventDefault();
+        }
+    });
+</script>
 

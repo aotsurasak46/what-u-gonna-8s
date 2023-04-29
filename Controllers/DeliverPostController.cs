@@ -30,6 +30,7 @@ namespace what_u_gonna_eat.Controllers
                     if(_db.DeliverPosts != null)
                     {
                         var post = _db.DeliverPosts.ToList();
+                        post.Reverse();
                         DeliverPostView vm = new DeliverPostView();
                         vm.deliverPosts = post;
                         vm.account = user;
@@ -104,8 +105,10 @@ namespace what_u_gonna_eat.Controllers
                 order.Orderer = user;
                 order.OrdererId = user.Id;
 
-                deliverPostView.deliverPost.OpenAmount -= 1;
-                deliverPostView.deliverPost.Orderers.Add(order);
+                post.OpenAmount -= 1;
+                if(post.OpenAmount <= 0) {
+                    post.Status = false;
+                }
 
                 _db.Orders.Add(order);
                 _db.SaveChanges();
@@ -120,8 +123,18 @@ namespace what_u_gonna_eat.Controllers
         public IActionResult Delete(int postId) 
         {
             var post = _db.DeliverPosts.FirstOrDefault(p => p.Id == postId);
+            var orders = _db.Orders.ToList();
+            
             if (post != null)
             {
+                foreach (var o in orders)
+                {
+                    if (o.DeliverPostId == postId)
+                    {
+                        _db.Orders.Remove(o);
+                        _db.SaveChanges();
+                    }
+                }
                 _db.DeliverPosts.Remove(post);
                 _db.SaveChanges();
                 return RedirectToAction("Index","Profile");
