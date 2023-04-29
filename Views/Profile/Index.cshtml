@@ -8,7 +8,7 @@
     ViewData["Title"] = "Profile";
 }
 
-<h1 style="color: green">Profile</h1>
+<h1 c>Profile</h1>
 <div class="pb-3">
     <p>Name : @Model.account.Username</p></p>
     <p>Email : @Model.account.Email</p>
@@ -29,10 +29,12 @@
 
 <hr/>
 <h1 class="pt-3" style="font-size:20px">History</h1>
-<h1 style="color: green">Your Posts</h1>
+<h1 style="color: green; font-size:18px">Your Posts</h1>
 <div>
-    <h1>Your Deliver Post</h1>
-    @foreach(var post in Model.deliverposts)
+    <h1 style="color: red; font-size:16px">Your Deliver Post</h1>
+    @if (Model.deliverposts.Any(p=> p.PosterId == Model.account.Id))
+    {
+        @foreach(var post in Model.deliverposts)
     {
         @if(post.PosterId == Model.account.Id)
         {
@@ -73,30 +75,47 @@
             </div>
         }
     }
-    <h1>Your Eater Post</h1>
-    @foreach (var post in Model.eaterposts)
+    }
+    else
     {
-        @if (post.PosterId == Model.account.Id)
+        <div class="p-3" style="border: 1px solid black">
+            You don't have any Deliver Posts yet.
+        </div>
+    }
+
+    <h1 style="color: red; font-size:16px" style="color: red; font-size:16px">Your Eater Post</h1>
+    @if(Model.eaterposts.Any(p=>p.PosterId == Model.account.Id))
+    {
+        @foreach (var post in Model.eaterposts)
         {
+            @if (post.PosterId == Model.account.Id)
+            {
             
-            <div class="p-3" style="border: 1px solid black">
-                <p>Type : Eater Post</p>
-                <p>Menu : @post.Menu</p>
-                <P>Description : @post.Description</P>
-                <p>Buyer: @Model.eaterpostaccounts.FirstOrDefault(e => e.EaterPostId == post.Id)?.Buyer?.Username</p>
+                <div class="p-3" style="border: 1px solid black">
+                    <p>Type : Eater Post</p>
+                    <p>Menu : @post.Menu</p>
+                    <P>Description : @post.Description</P>
+                    <p>Buyer: @Model.eaterpostaccounts.FirstOrDefault(e => e.EaterPostId == post.Id)?.Buyer?.Username</p>
                 
-                    <!-- Use the asp-confirm attribute to display a confirmation dialog -->
-                <form method="post" asp-action="Delete" asp-controller="EaterPost" asp-route-postId="@post.Id">
-                    <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
-                </form>
-            </div>
+                        <!-- Use the asp-confirm attribute to display a confirmation dialog -->
+                    <form method="post" asp-action="Delete" asp-controller="EaterPost" asp-route-postId="@post.Id">
+                        <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
+                    </form>
+                </div>
+            }
         }
+    }
+    else
+    {
+        <div class="p-3" style="border: 1px solid black">
+            You don't have any Eater Posts yet.
+        </div>
     }
 </div>
 
 <h1 style="color: green">Your Orders</h1>
 <div>
-    <h2>Orderers</h2>
+    <h2 style="color: red; font-size:16px">Orderers</h2>
     <div>
         @if(Model.orders.Any(o => o.OrdererId == Model.account.Id))
         {
@@ -120,7 +139,7 @@
         }
     </div>
 
-    <h2>Buyer</h2>
+    <h2 style="color: red; font-size:16px">Buyer</h2>
     <div>
         @if(Model.eaterpostaccounts.Any(b=>b.BuyerId == Model.account.Id))
         {
