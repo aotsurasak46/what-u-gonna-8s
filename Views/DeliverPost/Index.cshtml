@@ -4,15 +4,14 @@
 @using what_u_gonna_eat.ViewModels;
 @model DeliverPostView
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <h1>Ayo! Have Fun!</h1>
-    <h1 class="text-center">Login</h1>
-    <form method="POST" asp-controller="DeliverPost" asp-action="Create">
+    
+    <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
         <select asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
             <option selected>Select Restaurant</option>
             <option value="Pratep">Pratep</option>
             <option value="Sia O">Sia O</option>
             <option value="T PangGon">T PangGon</option>
+            <option value="To be number wannnn">To be number wannnn</option>
         </select>
         
         <div class="form-group">
@@ -20,11 +19,15 @@
             <input placeholder="กรอกรายละเอียดการรับอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" />
         </div>
 
-        <button type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
+        <button id="createbtn" type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
     </form>
+
+
     <p>Learn bout <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    
     @if(Model.deliverPosts != null)
     {
+        
         @foreach(var post in Model.deliverPosts)
         {
             <div>
@@ -51,3 +54,21 @@
 
 
 </div>
+<script>
+    var createForm = document.getElementById("create-form");
+
+    // Add an onsubmit event listener to the form
+    createForm.addEventListener("submit", function (event) {
+        // Get the values of the form inputs
+        var restaurant = document.getElementById("deliverPost_Restaurant").value;
+        var description = document.getElementById("deliverPost_Description").value;
+
+        // Display the confirmation dialog with the form values
+        var confirmCreate = confirm("Are you sure you want to create this post?\nDetail:\n\tRestaurant: " + restaurant + "\n\tDescription: " + description);
+
+        // If the user clicked "Cancel", prevent the form submission
+        if (!confirmCreate) {
+            event.preventDefault();
+        }
+    });
+</script>

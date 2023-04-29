@@ -27,6 +27,7 @@ namespace what_u_gonna_eat.Controllers
                     if (_db.EaterPost != null)
                     {
                         var post = _db.EaterPost.ToList();
+                        post.Reverse();
                         EaterPostView vm = new EaterPostView();
                         vm.eaterPosts = post;
                         foreach(var obj in post)
