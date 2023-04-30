@@ -93,10 +93,98 @@ html.popup-active {
     opacity: 0.5; /* optional: change opacity to make button look disabled */
 }
 
+
+
 #addorderbox {
     position: absolute;
-    width: 662px;
-    height: 370px;
+    width: 400px;
+    height: 300px;
     background: #002D44;
     border-radius: 40px;
+    z-index: 2;
+}
+
+.line {
+    border-bottom: 2px solid #FFFF;
+    margin-left: 10%;
+    width:80%;
+}
+
+#texthead{
+    padding-left: 30%;
+}
+
+p.realyellow {
+    color: #FDBF46;
+    font-size: 20px;
+}
+
+#textinadd {
+    margin-top: 3%;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 3%;
+    padding-left: 10%;
+    font-family: 'Paytone One';
+    color: #FDBF46;
+}
+
+#enterfoodIT, #enterdesIT {
+    margin-left: 10%;
+    width: 80%;
+    height: 35px;
+    border-radius: 50px;
+    background-color: #F3EDD7;
+    font-size: 15px;
+    font-family: 'Paytone One';
+    padding: 5px;
+
+}
+
+#confirmAddOrderBtn {
+    font-size: 15px;
+    width: 20%;
+    margin-top: 6%;
+    margin-right: 10%;
+    float: right;
+    border-radius: 10px;
+    color: #FDBF46;
+    border: 3px solid #FDBF46;
+    font-family: 'Paytone One';
+    cursor: pointer;
+}
+
+#confirmAddOrderBtn:hover {
+    transition: .3s;
+    background-color: #FDBF46;
+    color: #002D44;
+}
+
+#cancleAddOrderBtn {
+    font-size: 15px;
+    width: 20%;
+    margin-top: 6%;
+    margin-right: 3%;
+    float: right;
+    border-radius: 10px;
+    color: #DA1820;
+    font-family: 'Paytone One';
+    border: 3px solid #DA1820;
+    cursor: pointer;
+}
+
+#cancleAddOrderBtn:hover {
+    transition: .3s;
+    color: #002D44;
+   background-color: #DA1820;
+}
+
+#modal1 {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
 }

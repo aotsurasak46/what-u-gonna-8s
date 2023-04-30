@@ -3,7 +3,7 @@
 }
 @using what_u_gonna_eat.ViewModels;
 @model DeliverPostView
-<link rel="stylesheet" href="~/css/DeliverPost.css" />
+<link rel="stylesheet" href="~/css/DeliverPost.css" asp-append-version="true"/>
 <div class="text-center">
     
     <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
@@ -24,29 +24,36 @@
     </form>
 </div>
 
-
-<div id="addorderbox" style="border:1px solid black ;position:absolute;left:40%;top:50%;display:none">
-    <p class="yellow">Your Order</p>
-    <form method="post" asp-action="addOrder" asp-controller="DeliverPost">
-        <div class="form-group">
-            <label>FoodName : </label>
-            <input id="enterfoodIT" placeholder="กรอกชื่ออาหารที่ต้องการ" name="foodName" class="form-control" required="" />
+<div id="modal1">
+    <div id="addorderbox" style="border:1px solid black ;position:absolute;left:40%;top:30%">
+        <div class="header p-2 items-center">
+            <div class="grid grid-cols-10 h-full mx-2 py-2.5">
+                <div id="texthead" class="flex col-span-8 items-center justify-center">
+                    <p class="text-center realyellow text-xl md:text-lg lg:text-2xl">Your Order</p>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label>Description : </label>
-            <input id="enterdesIT" placeholder="กรอกรายละเอียดการรับอาหาร หรือข้อมูลเพิ่มเติม" name="description" class="form-control" required="" />
-        </div>
-        <div class="form-group">
+        <div class="line"></div>
+        <form method="post" asp-action="addOrder" asp-controller="DeliverPost">
+            <div class="form-group">
+                <label id="textinadd">FoodName : </label>
+                <input id="enterfoodIT" placeholder="กรอกชื่ออาหารที่ต้องการ" name="foodName" class="form-control" required="" />
+            </div>
+            <div class="form-group">
+                <label id="textinadd">Description : </label>
+                <input id="enterdesIT" placeholder="กรอกรายละเอียดการรับอาหาร หรือข้อมูลเพิ่มเติม" name="description" class="form-control" required="" />
+            </div>
+            <div class="form-group">
             
-            <input type="hidden" name="postId" id="postIdInput" value="" />
-        </div>
-        <button id="confirmAddOrderBtn" type="submit" asp-action="addOrder" asp-controller="DeliverPost" >Confirm</button>
+                <input type="hidden" name="postId" id="postIdInput" value="" />
+            </div>
+            <button id="confirmAddOrderBtn" type="submit" asp-action="addOrder" asp-controller="DeliverPost" >Confirm</button>
 
-        <button id="cancleAddOrderBtn" type="button">Cancle</button>
+            <button id="cancleAddOrderBtn" type="button">Cancle</button>
 
-    </form>
+        </form>
+    </div>
 </div>
-
 
 @if (Model.deliverPosts != null)
 {
@@ -113,7 +120,7 @@
                         <p class="yellow">Amount @displayOpenamount/5</p>
                         @if (post.Status == true && post.PosterId != Model.account.Id)
                         {
-                            <button id="buttonwhenenable" onclick=setPostId(@post.Id)  type="submit" style="height:100px"><span class="iconify" data-icon="material-symbols:add-circle-rounded" style="color: #fdbf46;" data-width="100" data-height="100"></span></button>                       
+                            <button class="btnenable" id="buttonwhenenable" onclick=setPostId(@post.Id)  type="submit" style="height:100px"><span class="iconify" data-icon="material-symbols:add-circle-rounded" style="color: #fdbf46;" data-width="100" data-height="100"></span></button>                       
                                    
                         }
                         else
@@ -129,28 +136,14 @@
                 </div>
             </div>
 
-
-
-            @*<div>
-                
-                @if (post.Status == true && post.PosterId != Model.account.Id)
-                {
-                    <form method="post" asp-action="AddOrder" asp-controller="DeliverPost" asp-route-postId="@post.Id">
-                        <input placeholder="menu" name="foodName" class="form-control" required="">
-                        <input placeholder="description" name="description" class="form-control" required="">
-                        <button type="submit">Order</button>
-                    </form>
-                }
-            </div>*@
-
         }
        
     </div>
 }
 <script>
+
     const createForm = document.getElementById("create-form");
     var postAiD;
-    // Add an onsubmit event listener to the form
     createForm.addEventListener("submit", function (event) {
         // Get the values of the form inputs
         var restaurant = document.getElementById("deliverPost_Restaurant").value;
@@ -165,44 +158,19 @@
         }
     });
 
-    const addOrderBtn = document.getElementById("buttonwhenenable")
+
+    const allbtnenable = document.querySelectorAll('.btnenable');
     const cancleAddOrder = document.getElementById("cancleAddOrderBtn")
     const box = document.getElementById('addorderbox');
 
-    // Get all button elements outside of the box
-    const buttons = document.querySelectorAll('button:not(#addorderbox button)');
-    function enableExcecptBox()
-    {
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].onclick = null;
-            buttons[i].classList.remove('disabled');
-        }
-    }
-
-    function disableExcecptBox()
-    {
-        
-
-        // Disable click event on all buttons outside of the box
-        for (let i = 0; i < buttons.length; i++) {
-            buttons[i].onclick = function (event) {
-                event.preventDefault();
-            };
-            buttons[i].classList.add('disabled');
-        }
-    }
-
-    addOrderBtn.addEventListener("click", function (event) {
-        document.getElementById("addorderbox").style.display = "block";
-        disableExcecptBox();
- 
+    allbtnenable.forEach((element) => {
+        allbtnenable.addEventListener('click', () => {
+            document.getElementById("modal1").style.display = "block";
+        });
     });
-
 
     cancleAddOrder.addEventListener("click",function(event){
         clearAddOrder();
-        enableExcecptBox();
-
     })
 
     function setPostId(postId)
@@ -213,14 +181,11 @@
 
     function clearAddOrder()
     {
-        document.getElementById("addorderbox").style.display = "none";
+        document.getElementById("modal1").style.display = "none";
         document.getElementById("enterfoodIT").value = "";
         document.getElementById("enterdesIT").value = "";
         document.getElementById("postIdInput").value = "";
     }
-
-    const clickableElements = document.querySelectorAll('.clickable');
-    
 
 
 </script>
