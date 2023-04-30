@@ -1,10 +1,11 @@
 function myFunction() {
     var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
-    } else {
-      x.className = "topnav";
-    }
+      
+      if (x.className.indexOf("responsive") != -1) {
+        x.className = x.className.replace("responsive", "");
+      } else {
+        x.className += " responsive";
+      }
   }
 
   document.addEventListener('DOMContentLoaded', function() {
