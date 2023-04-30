@@ -1,0 +1,41 @@
+﻿.container, .edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    padding: 10px;
+
+}
+
+.edit-container {
+    background-color: #002D44;
+    width: 50%;
+    min-width: 310px;
+
+    border: none;
+    border-radius: 44px;
+
+}
+
+
+
+.title-section {
+    flex: 1;
+}
+
+.form-section {
+   flex: 1;
+}
+
+.submit-section {
+    flex: 1;
+    margin-top: 10px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.back {
+    margin-left: 10px;
+}
