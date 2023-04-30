@@ -32,8 +32,8 @@ namespace what_u_gonna_eat.Controllers
                 {
                     var vm = new ProfileViewModel();
                     vm.account = user;
-                    vm.deliverposts = _db.DeliverPosts.ToList();
-                    vm.eaterposts = _db.EaterPost.ToList();
+                    vm.deliverposts = _db.DeliverPosts.Include(dpt => dpt.Poster).ToList();
+                    vm.eaterposts = _db.EaterPost.Include(ept => ept.Poster).ToList();
                     vm.eaterpostaccounts = _db.EaterPostAccounts.Include(p => p.EaterPost).Include(e=> e.Buyer).ToList();
                     vm.orders = _db.Orders.Include(dp => dp.DeliverPost).Include(o => o.Orderer).ToList();
                     return View(vm);
@@ -50,21 +50,28 @@ namespace what_u_gonna_eat.Controllers
 
         public IActionResult Edit()
         {
-            var userId = HttpContext.Session.GetInt32("UserId");
-            if (userId != null)
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
+            if (user == null)
             {
-                // use the user ID to retrieve user information
-                var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
-                if (user != null)
-                {
-                    return View(user);
-                }
-                return NotFound();
+                return RedirectToAction("Login", "Account");
             }
-            else
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Account account)
+        {   
+            
+            if(account != null)
             {
-                return NotFound();
+                _db.Accounts.Update(account);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
             }
+
+            return View(account);
         }
     }
 }
