@@ -188,3 +188,230 @@ p.realyellow {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+
+/*thitar*/
+/* The modal (hidden by default) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* The Close Button */
+.close {
+    color: #FA9F1B;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+body {
+    margin: 0;
+    /* background-color: rgb(36, 3, 45); */
+}
+
+
+#eat {
+    color: #FDBF46;
+}
+
+
+
+
+#button {
+    font-size: 1em;
+    /* padding: 10px; */
+    color: #bc1b1b;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    /* transition: all 0.1s ease-out; */
+
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    margin-top: 450px;
+    text-decoration: none;
+    cursor: pointer;
+    background: url('https://api.iconify.design/material-symbols/add-circle.svg') no-repeat center center / contain;
+    content: url('https://api.iconify.design/material-symbols/add-circle.svg');
+}
+
+    #button:hover {
+        background: #FA9F1B;
+    }
+
+
+
+.modal-content {
+    margin: 150px auto;
+    padding: 20px;
+    background: #002D44;
+    border-radius: 40px;
+    width: 480px;
+    position: fixed;
+    transition: all 5s ease-in-out;
+    overflow: hidden;
+    right: 100px;
+}
+
+    .modal-content h2 {
+        margin-top: 0;
+        color: #FDBF46;
+        font-family: 'Paytone One';
+        text-align: center;
+    }
+
+    .modal-content .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #ffffff;
+    }
+
+        .modal-content .close:hover {
+            color: #FDBF46;
+        }
+
+    .modal-content .content {
+        max-height: 30%;
+        overflow: auto;
+    }
+
+
+.line {
+    border-bottom: 2px solid #FFFF;
+    /* padding-bottom: 20px; */
+    /* margin: 0 30px; */
+}
+
+.content {
+    margin-top: 15px;
+    font-family: 'Paytone One';
+}
+
+.textd {
+    width: 395px;
+    height: 100px;
+    border-radius: 40px;
+    font-family: 'Paytone One';
+    margin-left: 20px;
+    font-size: 15px;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre-wrap;
+    resize:none;
+}
+
+#boxrest {
+    margin-left: 20px;
+    width: 395px;
+ 
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Paytone One';
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+select {
+
+    font-size: 1.3em;
+    /* padding:10px; */
+    /* -webkit-appearance: none;
+   -moz-appearance: none;
+	appearance: none; */
+    margin: 10px;
+    background: rgb(255, 255, 255);
+    /* color: rgb(22, 20, 20); */
+    outline: none;
+}
+
+.textd {
+    width: 395px;
+    border-radius: 40px;
+    font-family: 'Paytone One';
+    margin-left: 20px;
+    font-size: 15px;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre-wrap;
+    resize: none;
+}
+
+.submit {
+    font-size: 20px;
+    float: right;
+    border-radius: 15px;
+    background-color: rgba(240, 248, 255, 0);
+    color: #FDBF46;
+    font-family: 'Paytone One';
+    border: 3px solid #FDBF46;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 25px;
+    padding: 6px;
+}
+
+@media screen and (max-width: 640px) {
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .textd {
+        width: 40%
+    }
+
+    .boxinput {
+        width: 60%
+    }
+
+    #boxrest {
+        width:60%;
+    }
+
+@media screen and (max-width: 768px) {
+
+    .modal-content {
+        width: 50%;
+    }
+
+    .textd {
+        width: 70%
+    }
+}
+
+
+@media screen and (max-width: 1024px) {
+
+    .modal-content {
+        width: 50%;
+    }
+
+    .textd {
+        width: 70%
+    }
+}
