@@ -1,0 +1,181 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: rgba(243, 237, 215, 0.8);
+    /*background-image: url(https://cdn.discordapp.com/attachments/951012805170061322/1098173906700996739/IMG_3989.PNG);*/
+    background-size: cover;
+    /* filter:opacity(30%); */
+}
+
+
+
+/* -------------------------------------- */
+
+/* page info */
+.container {
+    /* width: 100%;
+height: 100vh; */
+    display: flex;
+    justify-content: space-between;
+    /* background: rgba(243, 237, 215, 0.147); */
+    /* background-color: blanchedalmond; */
+}
+
+
+
+.col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    width: 200px;
+    height: 500px;
+    margin-left: 3%;
+    margin-top: 5%;
+    background: rgba(250, 159, 27, 0.48);
+    border-radius: 80px;
+    margin-right: 40px
+}
+
+
+.headpro {
+    position: center;
+    color: white;
+    width: 90%;
+    height: 100px;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-radius: 80px;
+    margin-top: 30px;
+    margin-bottom: 3px;
+    margin-left: 5%;
+    background-color: #F88400;
+    box-sizing: border-box;
+    font-family: 'Paytone One';
+    font-style: normal;
+    font-size: 50px;
+}
+
+.editbtn {
+    /* Rectangle 23 */
+    margin-top: 5%;
+    width: 30%;
+    margin-left: 60%;
+    border: 2px solid #D9171F;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 50px;
+    /* Edit */
+    height: 42px;
+    font-family: 'Paytone One';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 42px;
+    /* identical to box height */
+
+    color: #F53F00;
+}
+
+    .editbtn:hover {
+        transition: .3s;
+        cursor: pointer;
+        color: white;
+        background-color: #D9171F;
+    }
+
+.info-edit {
+    /*position: absolute;
+  width: 500px;
+  /* height: 70px; */
+    border-radius: 50px;
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.history {
+    /* position: absolute; */
+    width: 750px;
+    height: 600px;
+    /* left: 1214px;
+top: 300px; */
+    margin-right: 3%;
+    margin-top: 2%;
+    margin-left: 20px;
+    background: #002D44;
+    border-radius: 80px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.text-his {
+    font-family: 'Paytone One';
+    font-style: normal;
+    font-size: 35px;
+    color: #FDBF46;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.line {
+    border-bottom: 2px solid #FFFF;
+    margin: 0 30px;
+}
+
+.line1 {
+    border-bottom: 2px solid #FFFF;
+    text-align: center;
+    margin: 0 30px;
+    font-size: 30px;
+}
+
+.histext {
+    /* position: absolute; */
+    border-bottom: 2px solid #FFFFFF;
+}
+
+/* .Recback {
+/* position: absolute; */
+/* width: 100%;
+height: 100vh;
+background-size: cover;
+background: rgba(243, 237, 215, 0.8);
+
+} */
+
+/* reponsive */
+
+@media only screen and (max-width:800px) {
+    /* For tablets: */
+    body {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        padding-top: 85.5px;
+    }
+
+    .lineRotate {
+        width: 0;
+    }
+
+    .headpro {
+        position: relative;
+        padding-left: 30px;
+        color: white;
+    }
+
+    .history {
+        width: 100%;
+        align-items: center;
+    }
+}
