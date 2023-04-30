@@ -3,23 +3,37 @@
 }
 @using what_u_gonna_eat.ViewModels;
 @model EaterPostView
-<link rel="stylesheet" href="~/css/EaterPost.css" />
+<link rel="stylesheet" href="~/css/EaterPost.css" asp-append-version="true" />
 
-<div id="btnadd"></div>
-<div class="text-center">
+<a id="button" class="iconify" data-icon="material-symbols:add-circle"></a>
+
+<div id="modal" class="modal">
+<div class="modal-content">
+        <h2>Eater Post</h2>
+        <div class="line"></div>
+        <span class="close">&times;</span>
+    <div class="content">
+
     <form method="POST" asp-controller="EaterPost" asp-action="Create" id="create-form">
         <div class="form-group">
-            <label>Food : </label>
-            <input asp-for="eaterPost.Menu" class="form-control" required=""/>
+                <label class="foodtext">Food : </label>
+                <input class="boxinput" placeholder="กรอกชื่อเมนู"  asp-for="eaterPost.Menu" class="form-control" required="" />
         </div>
 
-        <div class="form-group">
-            <label>Description : </label>
-            <input placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" />
-        </div>
-        <button type="submit" asp-area="" asp-controller="EaterPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
+                <div class="form-group">
+                    <label class="foodtext">Description : </label>
+                  
+                    <textarea class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" required="" ></textarea>
+                </div>
+        <button type="submit" asp-area="" asp-controller="EaterPost" asp-action="Create" class="submit">Create</button>
     </form>
+
+        </div>
+    </div>
 </div>
+<!--
+<div class="metst">dawadee</div>-->
+
 
 <div class="grid grid-cols-1 gap-16 m-3 pt-6 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
     
@@ -90,5 +104,31 @@
             event.preventDefault();
         }
     });
+
+    // get button
+    const btn = document.getElementById("button");
+    // Get the modal element
+    const modal = document.getElementById("modal");
+
+    //get close
+    const cls = document.getElementsByClassName("close")[0];
+    // when onclick
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // when click x
+    cls.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    // click out x
+    //window.onclick = function (event) {
+    //    if (event.target == modal) {
+    //        modal.style.display = "none";
+    //    }
+    //};
+
+     src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" 
 </script>
 
