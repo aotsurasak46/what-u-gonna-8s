@@ -29,12 +29,13 @@ namespace what_u_gonna_eat.Controllers
                 {
                     if(_db.DeliverPosts != null)
                     {
-                        var post = _db.DeliverPosts.ToList();
+                        var post = _db.DeliverPosts.Include(p => p.Poster).ToList();
                         post.Reverse();
                         DeliverPostView vm = new DeliverPostView();
                         vm.deliverPosts = post;
                         vm.account = user;
-                        return View(vm);
+                        vm.accounts = _db.Accounts.ToList();
+                        return View(vm);    
                     }
                     else
                     {
