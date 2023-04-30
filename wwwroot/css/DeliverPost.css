@@ -77,8 +77,26 @@ p.dark-blue {
 
 #buttonwhenenable:hover, a:hover {
     opacity: 0.7;
+
 }
 
 #buttonwhendisable:hover, a:hover {
     opacity: 1;
+}
+
+html.popup-active {
+    pointer-events: none;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5; /* optional: change opacity to make button look disabled */
+}
+
+#addorderbox {
+    position: absolute;
+    width: 662px;
+    height: 370px;
+    background: #002D44;
+    border-radius: 40px;
 }
