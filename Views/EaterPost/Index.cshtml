@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <label class="foodtext">Description : </label>
                   
-                    <textarea class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" required="" ></textarea>
+                    <textarea id="textd" class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" required="" ></textarea>
                 </div>
         <button type="submit" asp-area="" asp-controller="EaterPost" asp-action="Create" class="submit">Create</button>
     </form>
@@ -31,8 +31,7 @@
         </div>
     </div>
 </div>
-<!--
-<div class="metst">dawadee</div>-->
+
 
 
 <div class="grid grid-cols-1 gap-16 m-3 pt-6 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
