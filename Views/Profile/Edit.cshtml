@@ -1,52 +1,67 @@
-﻿@model what_u_gonna_eat.Models.Account
+﻿@using what_u_gonna_eat.ViewModels;
+
+@model Account;
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Edit Profile";
 }
 
-<h1>View</h1>
+<link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
 
-<h4>Account</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="View">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+
+<div class="container">
+
+    <div class="edit-container">
+        <div class="title-section">
+            <div class="title-circle"></div>
+            Edit Profile
+        </div>
+
+        <div class="form-section">
+            <form method="post" asp-action="Edit" asp-controller="Profile">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Username" class="control-label"></label>
+                    <input asp-for="Username" class="form-control" type="text"/>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" type="email"/>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" type="tel"/>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="Password" class="control-label" hidden></label>
+                    <input asp-for="Password" class="form-control" type="tel" hidden />
+                    <span asp-validation-for="Password" class="text-danger" hidden></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="ConfirmPassword" class="control-label" hidden></label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="tel"  hidden/>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger" hidden></span>
+                </div>
+
+                <div class="submit-section">
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                    <div class="btn btn-secondary back">
+                        <a asp-action="Index">Back to List</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        
+
+    
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -4,25 +4,37 @@
 @using what_u_gonna_eat.ViewModels;
 @model DeliverPostView
 <link rel="stylesheet" href="~/css/DeliverPost.css" asp-append-version="true"/>
-<div class="text-center">
-    
-    <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
-        <select asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
-            <option selected>Select Restaurant</option>
-            <option value="Pratep">Pratep</option>
-            <option value="Sia O">Sia O</option>
-            <option value="T PangGon">T PangGon</option>
-            <option value="To be number wannnn">To be number wannnn</option>
-        </select>
-        
-        <div class="form-group">
-            <label>Description : </label>
-            <input placeholder="กรอกรายละเอียดการรับอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" required=""/>
-        </div>
+<link rel="stylesheet" href="~/css/EaterPost.css" asp-append-version="true" />
 
-        <button id="createbtn" type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="btn btn-primary my-2">Create</button>
-    </form>
+<a id="button" class="iconify" data-icon="material-symbols:add-circle"></a>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <h2>Deliver Post</h2>
+        <div class="line"></div>
+        <span class="close">&times;</span>
+        <div class="content">
+            <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
+            <select id="boxrest"  asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Select Restaurant</option>
+                    <option value="Pratep">Pratep</option>
+                    <option value="Sia O">Sia O</option>
+                    <option value="T PangGon">T PangGon</option>
+                    <option value="To be number wannnn">To be number wannnn</option>
+                </select>
+
+                <div class="form-group">
+                <label class="foodtext">Description : </label>
+                <textarea id="textd" class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" required=""></textarea>
+            </div>
+
+            <button type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="submit">Create</button>
+            </form>
+        </div>
+    </div>
 </div>
+
+
+ 
 
 <div id="modal1">
     <div id="addorderbox" style="border:1px solid black ;position:absolute;left:40%;top:30%">
@@ -163,8 +175,8 @@
     const cancleAddOrder = document.getElementById("cancleAddOrderBtn")
     const box = document.getElementById('addorderbox');
 
-    allbtnenable.forEach((btnenable) => {
-        btnenable.addEventListener('click', () => {
+    allbtnenable.forEach((element) => {
+        element.addEventListener('click', () => {
             document.getElementById("modal1").style.display = "block";
         });
     });
@@ -187,6 +199,24 @@
         document.getElementById("postIdInput").value = "";
     }
 
+    const btn = document.getElementById("button");
+    // Get the modal element
+    const modal = document.getElementById("modal");
 
-</script>
+    //get close
+    const cls = document.getElementsByClassName("close")[0];
+    // when onclick
+    btn.onclick = function () {
+        modal.style.display = "block";
+    };
+
+    // when click x
+    cls.onclick = function () {
+        modal.style.display = "none";
+    };
+
+
+                src = "https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"
+
+            </script>
 

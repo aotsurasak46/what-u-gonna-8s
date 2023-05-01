@@ -29,12 +29,13 @@ namespace what_u_gonna_eat.Controllers
                 {
                     if(_db.DeliverPosts != null)
                     {
-                        var post = _db.DeliverPosts.ToList();
+                        var post = _db.DeliverPosts.Include(p => p.Poster).ToList();
                         post.Reverse();
                         DeliverPostView vm = new DeliverPostView();
                         vm.deliverPosts = post;
                         vm.account = user;
-                        return View(vm);
+                        vm.accounts = _db.Accounts.ToList();
+                        return View(vm);    
                     }
                     else
                     {
@@ -84,19 +85,23 @@ namespace what_u_gonna_eat.Controllers
         }
 
 
-        public IActionResult AddOrder(string foodName,string description, int? postId) 
+        public IActionResult AddOrder(DeliverPostView deliverPostView, string foodName,string description, int? postId) 
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
-            var post = _db.DeliverPosts.FirstOrDefault(u => u.Id == postId);
-            if (post.Status)
+            deliverPostView = new DeliverPostView();
+            var post = _db.DeliverPosts
+                .Include(p => p.Orderers)
+                    .ThenInclude(deliverPostView => deliverPostView)
+                .FirstOrDefault(p => p.Id == postId);
+            if (deliverPostView.deliverPost.Status)
             {
                 Order order = new Order();
                 order.Menu = foodName;
                 order.Description = description;
 
-                order.DeliverPost = post;
-                order.DeliverPostId = post.Id;
+                order.DeliverPost = deliverPostView.deliverPost;
+                order.DeliverPostId = deliverPostView.deliverPost.Id;
 
                 order.Orderer = user;
                 order.OrdererId = user.Id;
@@ -105,6 +110,7 @@ namespace what_u_gonna_eat.Controllers
                 if(post.OpenAmount <= 0) {
                     post.Status = false;
                 }
+
                 _db.Orders.Add(order);
                 _db.SaveChanges();
                 return RedirectToAction("Index");

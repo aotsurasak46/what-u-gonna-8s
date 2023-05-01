@@ -245,9 +245,16 @@ p.dark-blue {
     resize:none;
 }
 
-    .textd::-webkit-scrollbar {
-        width: 1px;
+  /*  #textd::-webkit-scrollbar {
+        width: 10px;
+        
     }
+*/
+
+#textd::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 10px;
+}
 
 
     .submit {
