@@ -1,5 +1,5 @@
 ﻿p.yellow {
-    color: #EE7D00;
+    color: #FA8100;
 }
 
 body {
@@ -10,7 +10,7 @@ p.dark-blue {
 }
 
 .yellow-div {
-    background-color: #FDBF46;
+    background-color: #FA8100;
 }
 
 .vertical {
@@ -119,7 +119,7 @@ html.popup-active {
 }
 
 p.realyellow {
-    color: #FDBF46;
+    color: #FA8100;
     font-size: 20px;
 }
 
