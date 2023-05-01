@@ -90,10 +90,20 @@ namespace what_u_gonna_eat.Controllers
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _db.Accounts.FirstOrDefault(u => u.Id == userId);
             deliverPostView = new DeliverPostView();
+            //var post = _db.DeliverPosts
+            //    .Include(p => p.Orderers)
+            //        .ThenInclude(deliverPostView => deliverPostView)
+            //    .FirstOrDefault(p => p.Id == postId);
+
             var post = _db.DeliverPosts
                 .Include(p => p.Orderers)
-                    .ThenInclude(deliverPostView => deliverPostView)
                 .FirstOrDefault(p => p.Id == postId);
+            
+            if (post == null)
+            {
+                return NotFound();
+            }
+            deliverPostView.deliverPost = post;
             if (deliverPostView.deliverPost.Status)
             {
                 Order order = new Order();

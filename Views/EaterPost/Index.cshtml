@@ -20,11 +20,11 @@
                 <input class="boxinput" placeholder="กรอกชื่อเมนู"  asp-for="eaterPost.Menu" class="form-control" required="" />
         </div>
 
-                <div class="form-group">
-                    <label class="foodtext">Description : </label>
+        <div class="form-group">
+            <label class="foodtext">Description : </label>
                   
-                    <textarea id="textd" class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" required="" ></textarea>
-                </div>
+            <textarea id="textd" class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="eaterPost.Description" class="form-control" required="" ></textarea>
+        </div>
         <button type="submit" asp-area="" asp-controller="EaterPost" asp-action="Create" class="submit">Create</button>
     </form>
 
@@ -46,18 +46,21 @@
                         <img class="w-16" style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/1034739268058365962/1100697075139760168/erum.png" alt="Rounded avatar">
                     </div>
                     <div class="flex col-span-8 items-center justify-center">
-                        <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster.Username</p>
+                        <div style="display:flex;flex-direction:column">
+                            <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster.Username</p>
+                            <p class="text-center text-base dark-blue md:text-sm lg:text-lg">#Eater</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="flex flex-row items-center h-full my-3 mx-4 divide-x-2 lg:mx-5">
                 <div class="basis-3/5 h-full space-y-2.5 mr-4">
-                    <p class="yellow">Food :</p>
+                    <p class="yellow" style="color : #FA8100">Food :</p>
                     <div>
                         <span class="px-3 py-0.5 text-xs border-2 border-black rounded-full md:text-sm thai">@post.Menu</span>
                     </div>
-                    <p class="yellow">Detail :</p>
+                    <p class="yellow" style="color : #FA8100">Detail :</p>
                     <textarea id="style-2" rows="4" class="resize-none disable-scroll thai text-ms md:text-sm block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-black border-2 "
                               disabled>@post.Description
                     </textarea>

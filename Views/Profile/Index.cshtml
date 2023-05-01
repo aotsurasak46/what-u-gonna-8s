@@ -36,9 +36,11 @@
             }
         </div>
 
-        <button>
-            <a asp-controller="Profile" asp-action="Edit" class="editbtn">Edit</a>
-        </button>
+        <form method="get"  asp-controller="Profile" asp-action="Edit">
+            <button method="get"  asp-controller="Profile" asp-action="Edit" class="editbtn">
+                Edit
+            </button>
+        </form>
 
     </div>
 
@@ -57,14 +59,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
 
 
 
