@@ -90,11 +90,11 @@
 
                 <div class="flex flex-row items-center h-full my-3 mx-4 divide-x-2 lg:mx-5">
                     <div class="basis-3/5 h-full space-y-2.5 mr-4">
-                        <p class="yellow">Restaurant :</p>
+                        <p class="yellow" style="color : #FA8100">Restaurant :</p>
                         <div>
                             <span class="px-3 py-0.5 text-xs border-2 border-black rounded-full md:text-sm thai">@post.Restaurant</span>
                         </div>
-                        <p class="yellow">Description :</p>
+                        <p class="yellow" style="color : #FA8100">Description :</p>
                         <textarea id="style-2" rows="4" class="resize-none disable-scroll thai text-ms md:text-sm block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-black border-2 "
                           disabled>@post.Description
                         </textarea>
@@ -130,9 +130,9 @@
 
                             }
                         }
-                        
-                        
-                        <p class="yellow">Amount @displayOpenamount/5</p>
+
+
+                        <p class="yellow" style="color : #FA8100">Amount @displayOpenamount/5</p>
                         @if (post.Status == true && post.PosterId != Model.account.Id)
                         {
                             <button class="btnenable" id="buttonwhenenable" onclick=setPostId(@post.Id)  type="submit" style="height:100px"><span class="iconify" data-icon="material-symbols:add-circle-rounded" style="color: #fdbf46;" data-width="100" data-height="100"></span></button>                       

@@ -16,9 +16,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        
-        <nav class="navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 p-0">
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 p-0 top-0 z-50" style="position:fixed;width:100%" >
             <div class="container-fluid w-full px-0">
                 <div class="topnav w-full py-0" id="myTopnav">
 
@@ -42,7 +41,8 @@
         </nav>
     </header>
     <div>
-        <main id="main-content" role="main">
+        <main id="main-content" role="main" style="margin-top:80px">
+
             @RenderBody()
         </main>
     </div>
@@ -53,17 +53,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     
     @await RenderSectionAsync("Scripts", required: false)
-    @{
-        string activePage = ViewContext.RouteData.Values["action"].ToString();
-    }
-    <script>
-        $(document).ready(function () {
-            $('a').on('click', function (e) {
-                e.preventDefault();
-                var url = $(this).data('url');
-                $('#main-content').load(url);
-            });
-        });
-    </script>
 </body>
 </html>
