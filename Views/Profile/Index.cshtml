@@ -46,95 +46,265 @@
 
     <!-- column2 History -->
 
-    <div class="history">
+    <div class="history space-y-5">
         <h1 class="text-his">History</h1>
         <div class="line"></div>
-        <!-- <span class="line1">test</span><br>
-        <span class="line1">test</span><br>
-        <span class="line1">test</span> -->
+        <div class="flex flex-col text-white border-4 mx-4">
+            <p class="yellow text-lg lg:text-xl">Deliver Post</p>
+            <div class="mx-3">
+                @if (Model.deliverposts.Any(p => p.PosterId == Model.account.Id))
+                {
+                    @foreach (var post in Model.deliverposts)
+                    {
+                        @if (post.PosterId == Model.account.Id)
+                        {
+                            
+                             string formattedDateTime = post.CreatedDate.ToString("yyyy/MM/dd HH:mm tt");
+                            
+                            <div class="grid grid-cols-12 w-full items-center space-x-2">
+                                <div class="col-span-3 lg:col-span-3 text-xs min-[500px]:text-base  min-[900px]:text-base min-[1080px]:text-base">@formattedDateTime</div>
+                                <div class="col-span-5 lg:col-span-6 text-xs min-[500px]:text-base min-[900px]:text-lg thai">คุณรับฝากที่ร้าน <span class="yellow">@post.Restaurant</span></div>
+                                <div class="col-span-4 lg:col-span-3 flex flex-row items-center  justify-end">
+                                    <div class="flex justify-center shrink-0">
+                                        <form method="post" asp-action="Delete" asp-controller="DeliverPost" asp-route-postId="@post.Id">
+                                            <button id="deleteButton"  class="rounded-full bg-red-600 px-3 text-xs min-[500px]:text-sm xl:text-base" asp-confirm="Are you sure you want to delete this post">Delete</button>
+                                        </form>
+                                    </div>
+                                    <button name="deliver" id="@post.Id" class="deliverdetailbtn">
+                                        <span class="iconify w-5 min-[900px]:w-6 min-[1200px]:w-10 shrink-0" data-icon="ri:arrow-drop-down-line" data-width="35" data-height="35"></span>
+                                    </button>
+                                </div>
+                                <div class="hiddenDeliverBox" id="@post.Id" name="deliver" style="display:none">
+                                    @if (post.Status)
+                                    {
+                                        <div id="statusbox" style="height:30px;width:35px;right:10px;top:10px;border:1px solid black;background-color:#164400;position:center; color: white">เปิด</div>
+                                    }
+                                    else
+                                    {
+                                        <div id="statusbox" style="right:10px;top:10px;border:1px solid black;background-color:#DA1820;color: white"><p>ปิด</p></div>
+                                    }
+                                    <p>Description : @post.Description</p>
+                                    @if (post.Orderers != null && post.Orderers.Any())
+                                    {
+                                        <p>Orderers:</p>
+                                        <ul>
+                                            @foreach (var orderer in post.Orderers)
+                                            {
+                                                <li>@orderer.Orderer?.Username - @orderer.Menu - @orderer.Description</li>
+                                            }
+                                        </ul>
+                                    }
+                                    else
+                                    {
+                                        <p>Oderer: none</p>
+                                    }
+                                </div>
+                            </div>
+
+                        }
+                    }
+                }
+                else
+                {
+                    <div class="p-3" style="border: 1px solid black">
+                        You don't have any Deliver Posts yet.
+                    </div>
+                }
+                
+
+            </div>
+
+        </div>
+        <div class="flex flex-col text-white border-4 mx-4">
+            <div><p>dasgdaskhj</p></div>
+            <div>b</div>
+            <div>c</div>
+        </div>
+        <div class="flex flex-col text-white border-4 mx-4">
+            <div><p>dasgdaskhj</p></div>
+            <div>b</div>
+            <div>c</div>
+        </div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        var deleteButton = document.getElementById("deleteButton");
 
+        // Add an onclick event listener to the button
+        deleteButton.addEventListener("click", function (event) {
+            // Display the confirmation dialog
+            var confirmDelete = confirm("Are you sure you want to delete this object?");
 
+            // If the user clicked "Cancel", prevent the form submission
+            if (!confirmDelete) {
+                event.preventDefault();
+            }
+        });
+
+        const allDeliverDetailBtn = document.querySelectorAll(".deliverdetailbtn")
+        const allDeliverHidBox = document.querySelectorAll(".hiddenDeliverBox")
+
+        allDeliverDetailBtn.forEach((element) => {
+            element.addEventListener("click",() => {
+                allDeliverHidBox.forEach((elemint) => {
+                    if(element.id == elemint.id){
+                        console.log("click")
+                        var display = window.getComputedStyle(elemint).getPropertyValue("display")
+                        console.log(display)
+                        if (display == "block") {
+                            elemint.style.display = "none"
+                        }
+                        else{
+                            elemint.style.display = "block"
+                        }
+                            
+                    }
+                })
+            })
+        })
+
+    </script>
 </div>
 
 
 
-@*<h1>History</h1>
+<hr />
+<h1 class="pt-3" style="font-size:20px">History</h1>
+<h1 style="color: green; font-size:18px">Your Posts</h1>
 <div>
-    <h1>Your Deliver Post</h1>
-    @foreach(var post in Model.deliverposts)
+    <h1 style="color: red; font-size:16px">Your Deliver Post</h1>
+    @if (Model.deliverposts.Any(p => p.PosterId == Model.account.Id))
     {
-        @if(post.PosterId == Model.account.Id)
+        @foreach (var post in Model.deliverposts)
         {
-            <div style="border: 1px solid black">
-                @if (post.Status)
-                {
-                    <div id="statusbox" style="height:30px;width:100px;right:10px;top:10px;border:1px solid black;background;background-color:#164400;position:center" >เปิด</div>
-                }
-                else
-                {
-                    <div id="statusbox" style="right:10px;top:10px;border:1px solid black;background;background-color:#DA1820"><p>ปิด</p></div>
-                }
-                <p>Type : Deliver Post</p>
-                <p>Restaurant : @post.Restaurant</p>
-                <P>Description : @post.Description</P>
-                @if (post.Orderers != null && post.Orderers.Any())
-                {
-                    <p>Orderers:</p>
-                    <ul>
-                        @foreach (var orderer in post.Orderers)
-                        {
-                            <li>@orderer.Orderer?.Username - @orderer.Menu - @orderer.Description</li>
-                        }
-                    </ul>
-                }
-                else
-                {
-                    <p>Oderer: none</p>
-                }
+            @if (post.PosterId == Model.account.Id)
+            {
+                <div style="border: 1px solid black" class="p-3">
+                    @if (post.Status)
+                    {
+                        <div id="statusbox" style="height:30px;width:35px;right:10px;top:10px;border:1px solid black;background;background-color:#164400;position:center; color: white">เปิด</div>
+                    }
+                    else
+                    {
+                        <div id="statusbox" style="right:10px;top:10px;border:1px solid black;background;background-color:#DA1820;color: white"><p>ปิด</p></div>
+                    }
+                    <p>Type : Deliver Post</p>
+                    <p>Restaurant : @post.Restaurant</p>
+                    <P>Description : @post.Description</P>
 
-                <!-- Use the asp-confirm attribute to display a confirmation dialog -->
-                <form method="post" asp-action="Delete" asp-controller="DeliverPost" asp-route-postId="@post.Id">
-
-                    <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
-                </form>
-
-            </div>
-        }
-    }
-    <h1>Your Eater Post</h1>
-    @foreach (var post in Model.eaterposts)
-    {
-        @if (post.PosterId == Model.account.Id)
-        {
-            <div style="border: 1px solid black">
-                <p>Type : Eater Post</p>
-                <p>Menu : @post.Menu</p>
-                <P>Description : @post.Description</P>
-                <p>Buyer: @Model.eaterpostaccounts.FirstOrDefault(e => e.EaterPostId == post.Id)?.Buyer?.Username</p>
+                    @if (post.Orderers != null && post.Orderers.Any())
+                    {
+                        <p>Orderers:</p>
+                        <ul>
+                            @foreach (var orderer in post.Orderers)
+                            {
+                                <li>@orderer.Orderer?.Username - @orderer.Menu - @orderer.Description</li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p>Oderer: none</p>
+                    }
 
                     <!-- Use the asp-confirm attribute to display a confirmation dialog -->
-                <form method="post" asp-action="Delete" asp-controller="EaterPost" asp-route-postId="@post.Id">
-                    <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
-                </form>
-            </div>
+                    <form method="post" asp-action="Delete" asp-controller="DeliverPost" asp-route-postId="@post.Id">
+
+                        <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
+                    </form>
+
+                </div>
+            }
         }
     }
-</div>*@
-<script>
-    var deleteButton = document.getElementById("deleteButton");
+    else
+    {
+        <div class="p-3" style="border: 1px solid black">
+            You don't have any Deliver Posts yet.
+        </div>
+    }
 
-    // Add an onclick event listener to the button
-    deleteButton.addEventListener("click", function (event) {
-        // Display the confirmation dialog
-        var confirmDelete = confirm("Are you sure you want to delete this object?");
+    <h1 style="color: red; font-size:16px" style="color: red; font-size:16px">Your Eater Post</h1>
+    @if (Model.eaterposts.Any(p => p.PosterId == Model.account.Id))
+    {
+        @foreach (var post in Model.eaterposts)
+        {
+            @if (post.PosterId == Model.account.Id)
+            {
 
-        // If the user clicked "Cancel", prevent the form submission
-        if (!confirmDelete) {
-            event.preventDefault();
+                <div class="p-3" style="border: 1px solid black">
+                    <p>Type : Eater Post</p>
+                    <p>Menu : @post.Menu</p>
+                    <P>Description : @post.Description</P>
+                    <p>Buyer: @Model.eaterpostaccounts.FirstOrDefault(e => e.EaterPostId == post.Id)?.Buyer?.Username</p>
+
+                    <!-- Use the asp-confirm attribute to display a confirmation dialog -->
+                    <form method="post" asp-action="Delete" asp-controller="EaterPost" asp-route-postId="@post.Id">
+                        <button id="deleteButton" class="btn btn-danger" asp-confirm="Are you sure you want to delete this post">Delete</button>
+                    </form>
+                </div>
+            }
         }
-    });
-</script>
+    }
+    else
+    {
+        <div class="p-3" style="border: 1px solid black">
+            You don't have any Eater Posts yet.
+        </div>
+    }
+</div>
+
+<h1 style="color: green">Your Orders</h1>
+<div>
+    <h2 style="color: red; font-size:16px">Orderers</h2>
+    <div>
+        @if (Model.orders.Any(o => o.OrdererId == Model.account.Id))
+        {
+            @foreach (var post in Model.orders)
+            {
+                @if (post.OrdererId == Model.account.Id)
+                {
+                    <div class="p-3" style="border: 1px solid black">
+                        <p>Your Buyer : @post.DeliverPost.Poster.Username</p>
+                        <p>Menu : @post.Menu</p>
+                        <P>Description : @post.Description</P>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="p-3" style="border: 1px solid black">
+                You don't have any Orders yet.
+            </div>
+        }
+    </div>
+
+    <h2 style="color: red; font-size:16px">Buyer</h2>
+    <div>
+        @if (Model.eaterpostaccounts.Any(b => b.BuyerId == Model.account.Id))
+        {
+
+            @foreach (var post in Model.eaterpostaccounts)
+            {
+                @if (post.BuyerId == Model.account.Id)
+                {
+                    <div class="p-3" style="border: 1px solid black">
+                        <p>Buy for : @post.EaterPost.Poster.Username</p>
+                        <p>Menu : @post.EaterPost.Menu</p>
+                        <P>Description : @post.EaterPost.Description</P>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <div class="p-3" style="border: 1px solid black">
+                You are not Buyer for anyone yet.
+            </div>
+
+        }
+    </div>
+</div>

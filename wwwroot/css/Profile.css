@@ -127,11 +127,21 @@ p {
 
 .history {
     min-width: 280px;
-    width: 100%;
+    width: 80%;
     height: 600px;
     background: #002D44;
     border-radius: 80px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 900px) {
+    .history {
+        width: 100%;
+    }
+}
+
+.yelloww {
+    color: #FDBF46;
 }
 
 .text-his {
