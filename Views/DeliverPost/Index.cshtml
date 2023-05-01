@@ -16,7 +16,7 @@
             <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
             <select id="boxrest"  asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Select Restaurant</option>
-                    <option value="Pratep">Pratep</option>
+                    <option value="เทคโนอินเตอร์">Pratep</option>
                     <option value="Sia O">Sia O</option>
                     <option value="T PangGon">T PangGon</option>
                     <option value="To be number wannnn">To be number wannnn</option>
@@ -37,7 +37,7 @@
  
 
 <div id="modal1">
-    <div id="addorderbox" style="border:1px solid black ;position:absolute;left:40%;top:30%">
+    <div id="addorderbox" style="border:1px solid black ;position:absolute;left:50%;top:45%">
         <div class="header p-2 items-center">
             <div class="grid grid-cols-10 h-full mx-2 py-2.5">
                 <div id="texthead" class="flex col-span-8 items-center justify-center">
@@ -69,7 +69,7 @@
 
 @if (Model.deliverPosts != null)
 {
-    <div class="grid grid-cols-1 gap-16 m-3 pt-6 min[1300px]:grid-cols-2 lg:grid-cols-3 lg:px-10">
+    <div class="grid grid-cols-1 gap-16 m-3 pt-6 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
         @foreach (var post in Model.deliverPosts)
         {
             <div class="flex flex-col card-p">
@@ -77,21 +77,24 @@
                 <div class="header yellow-div p-2 items-center">
                     <div class="grid grid-cols-10 h-full mx-2 py-2.5">
                         <div class="flex col-span-2 items-center justify-center">
-                            <img class="w-16" style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/975683623804100679/1071003865773785129/A_doggie.webp" alt="Rounded avatar">
+                            <img class="w-16" style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/975683623804100679/1102509863671713894/image.png" alt="Rounded avatar">
                         </div>
-                        <div class="flex col-span-8 items-center justify-center">
-                            <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster?.Username</p>
+                        <div class="flex col-span-8 items-center justify-center ">
+                            <div style="display:flex;flex-direction:column">
+                                <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster?.Username</p>
+                                <p class="text-center text-base md:text-sm lg:text-lg" style="color:#FA8100">#Deliver</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="flex flex-row items-center h-full my-3 mx-4 divide-x-2 lg:mx-5">
                     <div class="basis-3/5 h-full space-y-2.5 mr-4">
-                        <p class="yellow">Restaurant :</p>
+                        <p class="yellow" style="color : #FA8100">Restaurant :</p>
                         <div>
                             <span class="px-3 py-0.5 text-xs border-2 border-black rounded-full md:text-sm thai">@post.Restaurant</span>
                         </div>
-                        <p class="yellow">Description :</p>
+                        <p class="yellow" style="color : #FA8100">Description :</p>
                         <textarea id="style-2" rows="4" class="resize-none disable-scroll thai text-ms md:text-sm block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border-black border-2 "
                           disabled>@post.Description
                         </textarea>
@@ -127,9 +130,9 @@
 
                             }
                         }
-                        
-                        
-                        <p class="yellow">Amount @displayOpenamount/5</p>
+
+
+                        <p class="yellow" style="color : #FA8100">Amount @displayOpenamount/5</p>
                         @if (post.Status == true && post.PosterId != Model.account.Id)
                         {
                             <button class="btnenable" id="buttonwhenenable" onclick=setPostId(@post.Id)  type="submit" style="height:100px"><span class="iconify" data-icon="material-symbols:add-circle-rounded" style="color: #fdbf46;" data-width="100" data-height="100"></span></button>                       

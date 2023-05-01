@@ -3,39 +3,44 @@
 *@
 @using what_u_gonna_eat.ViewModels;
 @model ProfileViewModel;
-<link rel="stylesheet" href="~/css/Profile.css" />
+<link rel="stylesheet" href="~/css/Profile.css" asp-append-version="true" />
 @{
     ViewData["Title"] = "Profile";
 }
 
-<div class="container grid grid-cols-1 gap-16 m-3 pt-6 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
-
+<div class="profile-grid">
     <!-- column1 info -->
-    <div class="col">
-
-
-        <h1 class="headpro">profile</h1>
+    <div class="profile-container">
+        <div class="title-section">
+            <div class="title-circle"></div>
+            Profile
+        </div>
 
         <div class="info-edit" type="text" value="Username">
-            <span class="show-text">Name : @Model.account.Username</span>
+            Username :<span class="show-text"> @Model.account.Username</span>
         </div>
 
         <div class="info-edit">
-            <span class="show-text">Email : @Model.account.Email</span>
+            Email :<span class="show-text"> @Model.account.Email</span>
         </div>
 
         <div class="info-edit">
+            <div>Tel. :</div>
             @if (Model.account.PhoneNumber != null)
             {
-                <p>Phone number : @Model.account.PhoneNumber</p>
+                <span>@Model.account.PhoneNumber</span>
             }
             else
             {
-                <p>Phone number : - </p>
+                <span> none </span>
             }
         </div>
 
-        <button asp-controller="Profile" asp-action="Edit" class="editbtn">Edit</button>
+        <form method="get"  asp-controller="Profile" asp-action="Edit">
+            <button method="get"  asp-controller="Profile" asp-action="Edit" class="editbtn">
+                Edit
+            </button>
+        </form>
 
     </div>
 
@@ -54,14 +59,6 @@
 
 
 </div>
-
-
-
-
-
-
-
-
 
 
 

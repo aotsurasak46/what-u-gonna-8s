@@ -13,46 +13,45 @@
     <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 p-0">
+    <header >
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 p-0 top-0 z-50" style="position:fixed;width:100%" >
             <div class="container-fluid w-full px-0">
                 <div class="topnav w-full py-0" id="myTopnav">
-                    <a class="navbar-brand" asp-area="" asp-controller="DeliverPost" asp-action="Index">
+
+                    <a class="navbar-brand">
                         <img id="logo_brand" src="https://cdn.discordapp.com/attachments/1095718811665182810/1101084749658869880/logo8.png" alt="brand" />
                         <p id="brand">what you gonna 8</p>
                     </a>
-                    <a asp-action="Index" asp-controller="DeliverPost" style="padding: 0; margin: 0;">
-                        <div id="Deliver" class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                           aria-expanded="false" aria-label="Toggle navigation" >
-                           Deliver
-                        </div>
-                    </a>
-                    <a asp-action="Index" asp-controller="EaterPost" style="padding: 0; margin: 0">
-                        <div id="Eater" class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation" asp-action="Index" asp-controller="EaterPost">Eater</div>
-                    </a>
+                    <a id="Deliver" data-url="DeliverPost/Index"  class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">Deliver</a>
+                    <a id="Eater" data-url="EaterPost/Index" class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">Eater</a>
                     <div id="logo">
                         <img id="user_img" src="https://cdn.discordapp.com/attachments/975683623804100679/1101101923467276388/userpic.png" alt="user" />
                     </div>
-                    <a id="user" class="navbar-toggler">profile</a>
-                    <a id="Logout" class="navbar-toggler mt-2" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    <a id="user" data-url="Profile/Index" class="navbar-toggler">profile</a>
+                    <a id="Logout" data-url="Account/Logout" class="navbar-toggler mt-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">logout</a>
                     <a href="javascript:void(0);" style="font-size:25px;" class="icon" onclick="myFunction()">&#9776;</a>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="mx-3">
-        <main role="main" class="pb-3">
+    <div>
+        <main id="main-content" role="main" style="margin-top:80px">
+
             @RenderBody()
         </main>
     </div>
 
+    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

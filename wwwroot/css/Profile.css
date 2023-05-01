@@ -1,114 +1,134 @@
-﻿* {
+﻿/** {
     box-sizing: border-box;
-}
+}*/
 
 body {
     margin: 0;
-    background: rgba(243, 237, 215, 0.8);
-    /*background-image: url(https://cdn.discordapp.com/attachments/951012805170061322/1098173906700996739/IMG_3989.PNG);*/
-    background-size: cover;
-    /* filter:opacity(30%); */
+    /*    background: rgba(243, 237, 215, 0.8);
+    background-image: url(https://cdn.discordapp.com/attachments/951012805170061322/1098173906700996739/IMG_3989.PNG);
+    background-size: cover*/
+    /*    filter:opacity(30%); */
+    background-image: url(https://cdn.discordapp.com/attachments/975683623804100679/1102515928442347561/IMG_4178.PNG);
 }
 
-
-
-/* -------------------------------------- */
-
-/* page info */
-.container {
-    /* width: 100%;
-height: 100vh; */
-    display: flex;
-    justify-content: space-between;
-    /* background: rgba(243, 237, 215, 0.147); */
-    /* background-color: blanchedalmond; */
+p {
+    display: inline;
 }
 
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2%;
+    place-items: center;
+    /*    align-items: center;
+      justify-content: center; */
+    margin: 2%
+}
 
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+        padding-bottom: 50px;
+    }
+}
 
-.col {
+.profile-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 15px;
-    width: 200px;
-    height: 500px;
-    margin-left: 3%;
-    margin-top: 5%;
-    background: rgba(250, 159, 27, 0.48);
-    border-radius: 80px;
-    margin-right: 40px
+    align-items: center;
+    /*justify-content: center;*/
+    background-color: rgba(250, 159, 27, 0.78);
+    border-radius: 50px;
+    padding: 3%;
+    min-width: 280px;
+    width: 100%;
+    max-height: 425px;
 }
 
 
-.headpro {
-    position: center;
-    color: white;
-    width: 90%;
-    height: 100px;
+.title-section {
+    width: 95%;
+    color: aliceblue;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 5px;
     padding-bottom: 10px;
     border-radius: 80px;
-    margin-top: 30px;
-    margin-bottom: 3px;
-    margin-left: 5%;
-    background-color: #F88400;
+    margin-bottom: 50px;
+    margin-top: 25px;
+    border: 6px solid rgb(252, 252, 252);
+    background-color: #FA7E00;
     box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-family: 'Paytone One';
     font-style: normal;
-    font-size: 50px;
+    font-size: 25px;
+    position: relative;
+    right: -5px;
 }
 
-.editbtn {
-    /* Rectangle 23 */
-    margin-top: 5%;
-    width: 30%;
-    margin-left: 60%;
-    border: 2px solid #D9171F;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    border-radius: 50px;
-    /* Edit */
-    height: 42px;
-    font-family: 'Paytone One';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 42px;
-    /* identical to box height */
+/*.title-circle {
+    width: 85px;
+    height: 85px;
+    position: absolute;
+    left: -10px;
+    top: -14px;
+    border: 6px solid rgb(252, 252, 252);
+    border-radius: 100%;
+    background-color: #fa9f1b;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}*/
 
+.info-edit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    width: 80%;
+    border-radius: 10px;
+    height: 40px;
+    background-color: white;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+    .info-edit span {
+        margin-left: 15px;
+        overflow: hidden;
+    }
+
+.profile-container form {
+    align-self : flex-end;
+}
+
+.profile-container button {
     color: #F53F00;
+    border: 1px solid #D9171F;
+    border-radius: 50px;
+    align-self: flex-end;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    padding: 10px 20px;
 }
 
-    .editbtn:hover {
+    .profile-container button:hover {
         transition: .3s;
         cursor: pointer;
         color: white;
         background-color: #D9171F;
     }
 
-.info-edit {
-    /*position: absolute;
-  width: 500px;
-  /* height: 70px; */
-    border-radius: 50px;
-    background-color: white;
-    padding: 20px;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.profile-container a:hover,
+.profile-container a:focus {
+    color: white;
 }
 
-
 .history {
-    /* position: absolute; */
-    width: 750px;
+    min-width: 280px;
+    width: 100%;
     height: 600px;
-    /* left: 1214px;
-top: 300px; */
-    margin-right: 3%;
-    margin-top: 2%;
-    margin-left: 20px;
     background: #002D44;
     border-radius: 80px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -138,45 +158,4 @@ top: 300px; */
 .histext {
     /* position: absolute; */
     border-bottom: 2px solid #FFFFFF;
-}
-
-/* .Recback {
-/* position: absolute; */
-/* width: 100%;
-height: 100vh;
-background-size: cover;
-background: rgba(243, 237, 215, 0.8);
-
-} */
-
-/* reponsive */
-
-@media only screen and (max-width:800px) {
-    /* For tablets: */
-    body {
-        width: 100%;
-        height: 100vh;
-    }
-
-    .container {
-        width: 100%;
-        height: 100vh;
-        padding-top: 85.5px;
-    }
-
-    .lineRotate {
-        width: 0;
-    }
-
-    .headpro {
-        position: relative;
-        padding-left: 30px;
-        color: white;
-    }
-
-    .history {
-        width: 100%;
-        margin-left: 45%;
-        margin: center;
-    }
 }
