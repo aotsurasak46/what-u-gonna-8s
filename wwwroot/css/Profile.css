@@ -22,7 +22,7 @@ p {
     place-items: center;
     /*    align-items: center;
       justify-content: center; */
-    margin: 2%
+    margin: 2%;
 }
 
 @media (max-width: 900px) {
@@ -43,6 +43,7 @@ p {
     min-width: 280px;
     width: 100%;
     max-height: 425px;
+    white-space: nowrap;
 }
 
 
@@ -128,7 +129,7 @@ p {
 .history {
     min-width: 280px;
     width: 80%;
-    height: 600px;
+    height: 783px;
     background: #002D44;
     border-radius: 80px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
