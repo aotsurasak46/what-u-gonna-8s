@@ -43,10 +43,13 @@
             <div class="header yellow-div p-2 items-center">
                 <div class="grid grid-cols-10 h-full mx-2 py-2.5">
                     <div class="flex col-span-2 items-center justify-center">
-                        <img class="w-16" style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/1034739268058365962/1100697075139760168/erum.png" alt="Rounded avatar">
+                        <img class="w-16" style="border-radius: 50%;" src="https://cdn.discordapp.com/attachments/975683623804100679/1102511347100553216/image.png" alt="Rounded avatar">
                     </div>
                     <div class="flex col-span-8 items-center justify-center">
-                        <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster.Username</p>
+                        <div style="display:flex;flex-direction:column">
+                            <p class="text-center text-xl dark-blue md:text-lg lg:text-2xl">@post.Poster?.Username</p>
+                            <p class="text-center text-base md:text-sm lg:text-lg" style="color:#FA8100">#Eater</p>
+                        </div>
                     </div>
                 </div>
             </div>
