@@ -18,7 +18,7 @@ namespace what_u_gonna_eat.Models
         [Required(ErrorMessage = "Description is required.")]
         public string? Description { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 

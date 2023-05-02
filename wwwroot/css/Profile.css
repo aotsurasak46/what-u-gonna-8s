@@ -22,7 +22,7 @@ p {
     place-items: center;
     /*    align-items: center;
       justify-content: center; */
-    margin: 2%
+    margin: 2%;
 }
 
 @media (max-width: 900px) {
@@ -43,6 +43,7 @@ p {
     min-width: 280px;
     width: 100%;
     max-height: 425px;
+    white-space: nowrap;
 }
 
 
@@ -127,11 +128,21 @@ p {
 
 .history {
     min-width: 280px;
-    width: 100%;
-    height: 600px;
+    width: 80%;
+    height: 783px;
     background: #002D44;
     border-radius: 80px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 900px) {
+    .history {
+        width: 100%;
+    }
+}
+
+.yelloww {
+    color: #FDBF46;
 }
 
 .text-his {
@@ -159,3 +170,24 @@ p {
     /* position: absolute; */
     border-bottom: 2px solid #FFFFFF;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #FFBF4B;
+    border-radius: 5px;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #FBA01C; 

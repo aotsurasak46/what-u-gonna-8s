@@ -33,9 +33,13 @@ namespace what_u_gonna_eat.Controllers
                     var vm = new ProfileViewModel();
                     vm.account = user;
                     vm.deliverposts = _db.DeliverPosts.Include(dpt => dpt.Poster).ToList();
+                    vm.deliverposts.Reverse();
                     vm.eaterposts = _db.EaterPost.Include(ept => ept.Poster).ToList();
+                    vm.eaterposts.Reverse();
                     vm.eaterpostaccounts = _db.EaterPostAccounts.Include(p => p.EaterPost).Include(e=> e.Buyer).ToList();
+                    vm.eaterpostaccounts.Reverse();
                     vm.orders = _db.Orders.Include(dp => dp.DeliverPost).Include(o => o.Orderer).ToList();
+                    vm.orders.Reverse();
                     return View(vm);
                 }
                 return RedirectToAction(nameof(AccountController.Login), "Account");
