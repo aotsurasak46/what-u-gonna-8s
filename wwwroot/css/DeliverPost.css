@@ -273,7 +273,7 @@ body {
     border-radius: 40px;
     width: 480px;
     position: fixed;
-    transition: all 5s ease-in-out;
+    /*transition: all 5s ease-in-out;*/
     overflow: hidden;
     right: 100px;
 }
@@ -281,7 +281,7 @@ body {
     .modal-content h2 {
         margin-top: 0;
         color: #FDBF46;
-        font-family: 'Paytone One';
+        font-family: 'Prompt';
         text-align: center;
     }
 
@@ -307,57 +307,20 @@ body {
 
 
 .line {
+    margin-top: 10px;
     border-bottom: 2px solid #FFFF;
-    /* padding-bottom: 20px; */
-    /* margin: 0 30px; */
 }
 
 .content {
     margin-top: 15px;
-    font-family: 'Paytone One';
+    font-family: 'Prompt';
 }
 
 .textd {
     width: 395px;
     height: 100px;
     border-radius: 40px;
-    font-family: 'Paytone One';
-    margin-left: 20px;
-    font-size: 15px;
-    padding: 20px;
-    overflow: auto;
-    white-space: pre-wrap;
-    resize:none;
-}
-
-#boxrest {
-    margin-left: 20px;
-    width: 395px;
- 
-    border-radius: 50px;
-    font-size: 15px;
-    font-family: 'Paytone One';
-    padding-left: 15px;
-    margin-top: 20px;
-}
-
-select {
-
-    font-size: 1.3em;
-    /* padding:10px; */
-    /* -webkit-appearance: none;
-   -moz-appearance: none;
-	appearance: none; */
-    margin: 10px;
-    background: rgb(255, 255, 255);
-    /* color: rgb(22, 20, 20); */
-    outline: none;
-}
-
-.textd {
-    width: 395px;
-    border-radius: 40px;
-    font-family: 'Paytone One';
+   
     margin-left: 20px;
     font-size: 15px;
     padding: 20px;
@@ -366,13 +329,54 @@ select {
     resize: none;
 }
 
+.textdox {
+    width: 395px;
+    height: 220px;
+    border-radius: 40px;
+    margin-left: 20px;
+    font-size: 15px;
+    padding: 20px;
+    overflow: auto;
+    white-space: pre-wrap;
+    resize: none;
+    font-family: 'Prompt';
+}
+
+#boxrest {
+    margin-left: 20px;
+    width: 395px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Prompt';
+    padding-left: 15px;
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+
+select {
+
+    font-size: 1.3em;
+    margin: 10px;
+    background: rgb(255, 255, 255);
+    outline: none;
+}
+
+.foodtext {
+    font-size: 20px;
+    font-family: 'Paytone One';
+    color: #FDBF46;
+ 
+    margin-bottom: 15px;
+    margin-left:20px;
+}
+
 .submit {
     font-size: 20px;
     float: right;
     border-radius: 15px;
     background-color: rgba(240, 248, 255, 0);
     color: #FDBF46;
-    font-family: 'Paytone One';
+    font-family: 'Prompt';
     border: 3px solid #FDBF46;
     cursor: pointer;
     margin-top: 10px;
@@ -390,8 +394,8 @@ select {
         width: 100%;
     }
 
-    .textd {
-        width: 40%
+    .textdox {
+        width: 60%
     }
 
     .boxinput {
@@ -408,8 +412,8 @@ select {
         width: 50%;
     }
 
-    .textd {
-        width: 70%
+    .textdox {
+        width: 60%
     }
 }
 
@@ -420,8 +424,8 @@ select {
         width: 50%;
     }
 
-    .textd {
-        width: 70%
+    .textdox {
+        width: 60%
     }
 }
     

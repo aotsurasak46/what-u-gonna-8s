@@ -14,17 +14,25 @@
         <span class="close">&times;</span>
         <div class="content">
             <form method="POST" asp-controller="DeliverPost" asp-action="Create" id="create-form">
-            <select id="boxrest"  asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <select id="boxrest" asp-for="deliverPost.Restaurant" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Select Restaurant</option>
-                    <option value="เทคโนอินเตอร์">Pratep</option>
-                    <option value="Sia O">Sia O</option>
-                    <option value="T PangGon">T PangGon</option>
-                    <option value="To be number wannnn">To be number wannnn</option>
+                    <option class="thai"value="ร้านพี่ฝน กาแฟสด&น้ำปั่น">ร้านพี่ฝน กาแฟสด&น้ำปั่น</option>
+                    <option class="thai value=" ร้านเทคโนอินเตอร์">ร้านเทคโนอินเตอร์</option>
+                    <option class="thai value="ร้านป้าศรีส้มตำ">ร้านป้าศรีส้มตำ</option>
+                    <option class="thai value="ร้านไอหนวด">ร้านไอหนวด</option>
+                    <option class="thai value="ร้านมามา ก๋วยเตี๋ยวเรือ">ร้านมามา ก๋วยเตี๋ยวเรือ</option>
+                    <option class="thai value="ร้านณรงค์ข้าวมันไก่">ร้านณรงค์ข้าวมันไก่</option>
+                    <option class="thai value=" ร้านมิลเลี่ยน">ร้านมิลเลี่ยน</option>
+                    <option class="thai value=" ร้านอิดรีส(ฮาลาล)">ร้านอิดรีส(ฮาลาล)</option>
+                    <option class="thai value=" ร้านไอเย็น">ร้านไอเย็น</option>
+                    <option class="thai value="ร้านโอชานะ">ร้านโอชานะ</option>
+                    <option class="thai value="ร้านcurry shop">ร้านcurry shop</option>
+                    <option class="thai value="ร้านครัวใต้ (ฮาลาล)">ร้านครัวใต้ (ฮาลาล)</option>
                 </select>
 
                 <div class="form-group">
                 <label class="foodtext">Description : </label>
-                <textarea id="textd" class="textd" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" required=""></textarea>
+                <textarea  class="textdox" placeholder="กรอกรายละเอียดร้านอาหาร หรือข้อมูลเพิ่มเติม" asp-for="deliverPost.Description" class="form-control" required=""></textarea>
             </div>
 
             <button type="submit" asp-area="" asp-controller="DeliverPost" asp-action="Create" class="submit">Create</button>

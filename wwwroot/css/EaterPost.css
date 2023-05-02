@@ -151,7 +151,7 @@ p.dark-blue {
     
     width: 480px;
     position: fixed;
-    transition: all 5s ease-in-out;
+    /*transition: all 5s ease-in-out;*/
     overflow: hidden;
     right:100px;
    
@@ -202,18 +202,20 @@ p.dark-blue {
     font-size: 20px;
     font-family: 'Paytone One';
     color: #FDBF46;
-    
+    margin-left:20px;
+    padding-top:5px;
     margin-bottom: 20px;
 }
 
 .boxinput {
-    width: 345px;
+    width: 325px;
     height: 35px;
     border-radius: 50px;
     font-size: 15px;
-    font-family: 'Paytone One';
+    font-family: 'Prompt';
     padding: 15px;
-    margin-left:5px;
+    margin-left: 5px;
+    
 }
 
 /*
@@ -238,13 +240,13 @@ p.dark-blue {
     width: 395px;
     height: 220px;
     border-radius: 40px;
-    font-family: 'Itim';
+    font-family: 'Prompt';
     margin-left: 20px;
     font-size: 15px;
     padding: 20px;
     overflow: auto;
     white-space: pre-wrap;
-    resize:none;
+    resize: none;
 }
 
   /*  #textd::-webkit-scrollbar {
